@@ -6,30 +6,27 @@
   <link rel="icon" href="favicon.png" type="image/png">
   <style>
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(to right, #e3f2fd, #ffffff);
-      color: #111;
+      font-family: 'Helvetica Neue', sans-serif;
       margin: 0;
-      padding: 0 20px;
-    }
-    .container {
-      max-width: 1100px;
+      padding: 40px 20px;
+      background: linear-gradient(to bottom right, #f8f9fa, #e0e0e0);
+      color: #111;
+      max-width: 1000px;
       margin: auto;
-      padding: 40px 0;
     }
     h1 {
-      font-size: 2.8em;
-      margin-bottom: 10px;
+      font-size: 2.3em;
+      margin-bottom: 5px;
     }
     h2 {
-      font-size: 1.6em;
+      font-size: 1.4em;
+      border-bottom: 2px solid #999;
       margin-top: 2em;
-      border-bottom: 2px solid #ccc;
       padding-bottom: 6px;
     }
     p, li {
-      font-size: 1.1em;
-      line-height: 1.7;
+      font-size: 1.05em;
+      line-height: 1.6;
     }
     ul {
       padding-left: 20px;
@@ -41,31 +38,33 @@
     a:hover {
       text-decoration: underline;
     }
-    .project img {
-      width: 100%;
-      max-width: 700px;
-      margin: 10px 0;
-      display: none;
+    img {
       border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      margin: 12px 0;
+      max-width: 100%;
+      display: block;
     }
-    .toggle {
+    .image-container {
+      display: none;
+      transition: all 0.3s ease-in-out;
+    }
+    .toggle-btn {
+      margin-top: 8px;
       cursor: pointer;
-      display: inline-block;
-      margin-left: 8px;
-      font-size: 1.2em;
-      color: #0077cc;
+      background: none;
+      color: #003366;
+      font-weight: bold;
+      border: none;
+      padding: 4px 0;
+      font-size: 1em;
     }
-    .view-label {
-      font-style: italic;
-      color: #555;
-      margin-left: 4px;
-      font-size: 0.95em;
+    .toggle-btn:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
-<div class="container">
+
   <h1>Zeid Al-Ruzouq</h1>
   <img src="profile.png" alt="Zeid Al-Ruzouq" width="180">
   <p><strong>Full-Stack Developer & AI Research Intern</strong><br>
@@ -81,61 +80,62 @@
 
   <h2>Summary</h2>
   <p>
-    I’m a developer and research intern focused on building intelligent systems and modern web applications. My work blends software engineering, ML/AI integration, and user interface design. I specialize in full-stack implementation, third-party API integration, and building tools for AI-powered scientific research.
+    I’m a developer and research intern focused on building intelligent systems and modern web applications. My work combines software engineering, interface design, and applied machine learning. I have experience delivering full-stack features, integrating third-party APIs, and contributing to research platforms that support data exploration and AI-powered analysis.
   </p>
 
-  <h2>Projects & Research</h2>
+  <h2>Projects & Technical Contributions</h2>
   <ul>
-    <li class="project">
+    <li>
       <strong>Mantis Platform – CSAIL, MIT</strong><br>
-      Interactive AI research tool for large-scale data visualization. I developed dynamic front-end modules and backend services for tools like the Gmail extractor ⤵<span class="view-label">View image</span>:
-      <img src="gmail.png" alt="Gmail extractor">
-      Also led the visualization of embedding gradients ⤵<span class="view-label">View image</span>:
-      <img src="gradients.png" alt="Gradient Visual">
+      Supported a visualization tool for interactive data exploration. Designed and implemented modules to extract structured data from Gmail using OAuth authentication. Built UI components for model uncertainty mapping using Grad-CAM overlays and UMAP projections. Contributed to dynamic visual interfaces and server endpoints for exploring softmax-based model errors.
+      <br><button class="toggle-btn">⮞ View Images</button>
+      <div class="image-container">
+        <img src="gmail.png" alt="Gmail Integration">
+        <img src="gradients.png" alt="UMAP Embedding">
+      </div>
     </li>
 
-    <li class="project">
-      <strong>Histopathology Classification</strong><br>
-      Developed a ConvNeXt-Tiny-based deep learning pipeline to classify oral cancer histology images. Focused on patch-based training, Grad-CAM interpretability ⤵<span class="view-label">View image</span>:
-      <img src="gradcam_mdoscc (1).png" alt="GradCAM visualization">
-      and confusion matrix analysis ⤵<span class="view-label">View image</span>:
-      <img src="confusion_matrix_percentage (6).png" alt="Confusion matrix">
-      <br><a href="https://github.com/ZeidAl-Ruzouq/convnext-results-oral-cancer" target="_blank">GitHub Repo</a>
+    <li>
+      <strong>Independent Machine Learning Research</strong><br>
+      Trained five diverse deep learning models on the ORCHID dataset for multiclass oral cancer histopathology classification. Used Grad-CAM to interpret feature importance and applied Mantis for uncertainty-aware latent space analysis. Focused on exposing confusion zones, model diversity, and embedding inconsistencies to prepare for ensemble fusion.
+      <br><button class="toggle-btn">⮞ View Images</button>
+      <div class="image-container">
+        <img src="confusion_matrix_percentage (6).png" alt="Confusion Matrix">
+        <img src="gradcam_mdoscc (1).png" alt="GradCAM for MDOSCC">
+      </div>
     </li>
 
-    <li class="project">
+    <li>
       <strong>AI Educational Tools</strong><br>
-      Created AI-powered systems for school websites. Includes a real-time Gemini chatbot embedded in school web pages ⤵<span class="view-label">View image</span>:
-      <img src="chatbot.png" alt="Chatbot UI">
-      and a PowerPoint-to-Quiz generator for creating MCQs from slides ⤵<span class="view-label">View image</span>:
-      <img src="AI-QUIZ.png" alt="AI PPTX Quiz tool">
-      <br><a href="https://github.com/ZeidAl-Ruzouq/AI-Educational-Tools" target="_blank">GitHub Repo</a>
+      Built interactive tools for education including a GPT-powered chatbot for school help and an AI-based quiz generator from PowerPoint slides. Focused on backend orchestration with OpenAI APIs, interface design for teachers and students, and automation of quiz generation from slide content.
+      <br><a href="https://github.com/ZeidAl-Ruzouq/AI-Educational-Tools" target="_blank">⮞ GitHub Repo</a>
+      <br><button class="toggle-btn">⮞ View Images</button>
+      <div class="image-container">
+        <img src="chatbot.png" alt="Chatbot Tool">
+        <img src="multimedia.jpeg" alt="Quiz From Presentation">
+      </div>
     </li>
   </ul>
 
   <h2>Skills</h2>
   <ul>
-    <li><strong>Languages:</strong> Python, JavaScript, TypeScript, HTML, CSS</li>
-    <li><strong>Frameworks:</strong> React, Django, Node.js</li>
-    <li><strong>Tools:</strong> Git, GitHub, REST APIs, OAuth, Google Cloud</li>
-    <li><strong>Other:</strong> Fluent in English and Arabic; basic French</li>
+    <li><strong>Programming:</strong> Python, JavaScript, TypeScript, HTML, CSS</li>
+    <li><strong>Frameworks & Libraries:</strong> React, Django, Node.js</li>
+    <li><strong>Tools & APIs:</strong> Git, GitHub, REST APIs, OAuth</li>
+    <li><strong>Languages:</strong> English (fluent), Arabic (fluent), French (basic)</li>
   </ul>
-</div>
 
-<script>
-  document.querySelectorAll('.project').forEach(section => {
-    const images = section.querySelectorAll('img');
-    const toggles = section.querySelectorAll('.toggle, .view-label');
-    toggles.forEach(toggle => {
-      toggle.style.cursor = 'pointer';
-      toggle.onclick = () => {
-        images.forEach(img => {
-          img.style.display = img.style.display === 'block' ? 'none' : 'block';
-        });
-      };
+  <script>
+    const buttons = document.querySelectorAll('.toggle-btn');
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const container = btn.nextElementSibling;
+        const isOpen = container.style.display === 'block';
+        container.style.display = isOpen ? 'none' : 'block';
+        btn.textContent = isOpen ? '⮞ View Images' : '⮝ Hide Images';
+      });
     });
-  });
-</script>
+  </script>
 
 </body>
 </html>
