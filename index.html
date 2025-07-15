@@ -6,31 +6,26 @@
   <link rel="icon" href="favicon.png" type="image/png">
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #e3f2fd, #ffffff);
+      color: #111;
       margin: 0;
-      padding: 0;
-      background: radial-gradient(circle at top left, #e9f5ff, #cce0ff);
-      color: #222;
+      padding: 0 20px;
     }
     .container {
       max-width: 1100px;
       margin: auto;
-      padding: 40px 20px;
+      padding: 40px 0;
     }
     h1 {
-      font-size: 2.6em;
-      margin-bottom: 0;
+      font-size: 2.8em;
+      margin-bottom: 10px;
     }
     h2 {
-      font-size: 1.5em;
-      border-bottom: 2px solid #ccc;
+      font-size: 1.6em;
       margin-top: 2em;
+      border-bottom: 2px solid #ccc;
       padding-bottom: 6px;
-    }
-    h3 {
-      margin-top: 1.5em;
-      font-size: 1.2em;
-      color: #003366;
     }
     p, li {
       font-size: 1.1em;
@@ -40,132 +35,107 @@
       padding-left: 20px;
     }
     a {
-      color: #0056b3;
+      color: #003366;
       text-decoration: none;
     }
     a:hover {
       text-decoration: underline;
     }
-    .project-img-wrapper {
-      margin: 10px 0;
-      position: relative;
-    }
-    .arrow-toggle {
-      background: none;
-      border: none;
-      font-size: 1.2em;
-      cursor: pointer;
-      color: #003366;
-      margin-left: 10px;
-    }
-    .view-img-label {
-      font-size: 0.95em;
-      color: #444;
-      margin-left: 6px;
-      font-style: italic;
-    }
-    .project-img {
-      display: none;
+    .project img {
       width: 100%;
-      max-width: 800px;
+      max-width: 700px;
+      margin: 10px 0;
+      display: none;
       border-radius: 8px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      margin-top: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
-    .show-img {
-      display: block;
+    .toggle {
+      cursor: pointer;
+      display: inline-block;
+      margin-left: 8px;
+      font-size: 1.2em;
+      color: #0077cc;
+    }
+    .view-label {
+      font-style: italic;
+      color: #555;
+      margin-left: 4px;
+      font-size: 0.95em;
     }
   </style>
-  <script>
-    function toggleImage(id) {
-      const img = document.getElementById(id);
-      img.classList.toggle('show-img');
-    }
-  </script>
 </head>
 <body>
-  <div class="container">
-    <h1>Zeid Al-Ruzouq</h1>
-    <img src="profile.png" alt="Zeid Al-Ruzouq" width="180">
-    <p><strong>Full-Stack Developer & AI Research Intern</strong><br>
-      <a href="https://github.com/ZeidAl-Ruzouq" target="_blank">GitHub Profile</a>
-    </p>
+<div class="container">
+  <h1>Zeid Al-Ruzouq</h1>
+  <img src="profile.png" alt="Zeid Al-Ruzouq" width="180">
+  <p><strong>Full-Stack Developer & AI Research Intern</strong><br>
+    <a href="https://github.com/ZeidAl-Ruzouq" target="_blank">GitHub Profile</a>
+  </p>
 
-    <h2>Contact</h2>
-    <p>
-      Email: <a href="mailto:zalruzouq@gmail.com">zalruzouq@gmail.com</a><br>
-      Phone: +1 (225) 575-0531<br>
-      Location: Allen, Texas
-    </p>
+  <h2>Contact</h2>
+  <p>
+    Email: <a href="mailto:zalruzouq@gmail.com">zalruzouq@gmail.com</a><br>
+    Phone: +1 (225) 575-0531<br>
+    Location: Allen, Texas
+  </p>
 
-    <h2>Summary</h2>
-    <p>
-      I’m a developer and research intern focused on building intelligent systems and modern web applications. My work combines software engineering, interface design, and applied machine learning. I have experience delivering full-stack features, integrating third-party APIs, and contributing to research platforms that support data exploration and AI-powered analysis.
-    </p>
+  <h2>Summary</h2>
+  <p>
+    I’m a developer and research intern focused on building intelligent systems and modern web applications. My work blends software engineering, ML/AI integration, and user interface design. I specialize in full-stack implementation, third-party API integration, and building tools for AI-powered scientific research.
+  </p>
 
-    <h2>Projects & Research</h2>
+  <h2>Projects & Research</h2>
+  <ul>
+    <li class="project">
+      <strong>Mantis Platform – CSAIL, MIT</strong><br>
+      Interactive AI research tool for large-scale data visualization. I developed dynamic front-end modules and backend services for tools like the Gmail extractor ⤵<span class="view-label">View image</span>:
+      <img src="gmail.png" alt="Gmail extractor">
+      Also led the visualization of embedding gradients ⤵<span class="view-label">View image</span>:
+      <img src="gradients.png" alt="Gradient Visual">
+    </li>
 
-    <h3>Mantis Platform – CSAIL, MIT</h3>
-    <p>Contributing to a large-scale AI research platform for cognitive cartography and human-AI collaboration in scientific workflows. My work spans end-to-end feature design, frontend interface components, and backend integrations.</p>
-    <ul>
-      <li>Designed interactive gradient visualization tools to highlight change in latent feature spaces based on user selection.
-        <button class="arrow-toggle" onclick="toggleImage('img1')">⤵</button>
-        <span class="view-img-label">View image</span>
-        <div class="project-img-wrapper">
-          <img src="gradients.png" id="img1" class="project-img">
-        </div>
-      </li>
-      <li>Built Gmail authentication flow and backend logic to extract semantic context from user emails using transformers.
-        <button class="arrow-toggle" onclick="toggleImage('img2')">⤵</button>
-        <span class="view-img-label">View image</span>
-        <div class="project-img-wrapper">
-          <img src="gmail.png" id="img2" class="project-img">
-        </div>
-      </li>
-      <li>Integrated external sources like Wikipedia, PubMed, and Reddit into a unified multimedia data space for AI-based exploration.
-        <button class="arrow-toggle" onclick="toggleImage('img3')">⤵</button>
-        <span class="view-img-label">View image</span>
-        <div class="project-img-wrapper">
-          <img src="multimedia.jpeg" id="img3" class="project-img">
-        </div>
-      </li>
-    </ul>
+    <li class="project">
+      <strong>Histopathology Classification</strong><br>
+      Developed a ConvNeXt-Tiny-based deep learning pipeline to classify oral cancer histology images. Focused on patch-based training, Grad-CAM interpretability ⤵<span class="view-label">View image</span>:
+      <img src="gradcam_mdoscc (1).png" alt="GradCAM visualization">
+      and confusion matrix analysis ⤵<span class="view-label">View image</span>:
+      <img src="confusion_matrix_percentage (6).png" alt="Confusion matrix">
+      <br><a href="https://github.com/ZeidAl-Ruzouq/convnext-results-oral-cancer" target="_blank">GitHub Repo</a>
+    </li>
 
-    <h3>Independent ML Model – Oral Cancer Classification</h3>
-    <p>Built and evaluated a deep learning pipeline using ConvNeXt-Tiny to classify oral cancer from histology slide images. Work included preprocessing H&E-stained data, uncertainty quantification via dropout, and Grad-CAM visualization.</p>
-    <div class="project-img-wrapper">
-      <button class="arrow-toggle" onclick="toggleImage('img4')">⤵</button>
-      <span class="view-img-label">View image</span>
-      <img src="gradcam_mdoscct (1).png" id="img4" class="project-img">
-    </div>
-    <div class="project-img-wrapper">
-      <button class="arrow-toggle" onclick="toggleImage('img5')">⤵</button>
-      <span class="view-img-label">View image</span>
-      <img src="confusion_matrix_percentage (6).png" id="img5" class="project-img">
-    </div>
-    <a href="https://github.com/ZeidAl-Ruzouq/convnext-results-oral-cancer" target="_blank">View Project</a>
+    <li class="project">
+      <strong>AI Educational Tools</strong><br>
+      Created AI-powered systems for school websites. Includes a real-time Gemini chatbot embedded in school web pages ⤵<span class="view-label">View image</span>:
+      <img src="chatbot.png" alt="Chatbot UI">
+      and a PowerPoint-to-Quiz generator for creating MCQs from slides ⤵<span class="view-label">View image</span>:
+      <img src="AI-QUIZ.png" alt="AI PPTX Quiz tool">
+      <br><a href="https://github.com/ZeidAl-Ruzouq/AI-Educational-Tools" target="_blank">GitHub Repo</a>
+    </li>
+  </ul>
 
-    <h3>AI Educational Tools</h3>
-    <p>Developed a set of intelligent web tools to enhance digital learning environments. Tools include an AI chatbot for schools with Gemini API, and a PowerPoint-to-quiz generator powered by language models.</p>
-    <div class="project-img-wrapper">
-      <button class="arrow-toggle" onclick="toggleImage('img6')">⤵</button>
-      <span class="view-img-label">View image</span>
-      <img src="chatbot.png" id="img6" class="project-img">
-    </div>
-    <div class="project-img-wrapper">
-      <button class="arrow-toggle" onclick="toggleImage('img7')">⤵</button>
-      <span class="view-img-label">View image</span>
-      <img src="AI-QUIZ.png" id="img7" class="project-img">
-    </div>
-    <a href="https://github.com/ZeidAl-Ruzouq/AI-Educational-Tools" target="_blank">View Project</a>
+  <h2>Skills</h2>
+  <ul>
+    <li><strong>Languages:</strong> Python, JavaScript, TypeScript, HTML, CSS</li>
+    <li><strong>Frameworks:</strong> React, Django, Node.js</li>
+    <li><strong>Tools:</strong> Git, GitHub, REST APIs, OAuth, Google Cloud</li>
+    <li><strong>Other:</strong> Fluent in English and Arabic; basic French</li>
+  </ul>
+</div>
 
-    <h2>Skills</h2>
-    <ul>
-      <li><strong>Programming:</strong> Python, JavaScript, TypeScript, HTML, CSS</li>
-      <li><strong>Frameworks & Libraries:</strong> React, Django, Node.js</li>
-      <li><strong>Tools & APIs:</strong> Git, GitHub, REST APIs, OAuth</li>
-      <li><strong>Languages:</strong> English (fluent), Arabic (fluent), French (basic)</li>
-    </ul>
-  </div>
+<script>
+  document.querySelectorAll('.project').forEach(section => {
+    const images = section.querySelectorAll('img');
+    const toggles = section.querySelectorAll('.toggle, .view-label');
+    toggles.forEach(toggle => {
+      toggle.style.cursor = 'pointer';
+      toggle.onclick = () => {
+        images.forEach(img => {
+          img.style.display = img.style.display === 'block' ? 'none' : 'block';
+        });
+      };
+    });
+  });
+</script>
+
 </body>
 </html>
