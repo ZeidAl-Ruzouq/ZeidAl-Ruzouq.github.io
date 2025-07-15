@@ -9,7 +9,7 @@
       font-family: 'Helvetica Neue', sans-serif;
       margin: 0;
       padding: 40px 20px;
-      background: linear-gradient(to bottom right, #ffffff, #f4f4f4);
+      background: #fdfdfd url('https://www.transparenttextures.com/patterns/white-diamond.png');
       color: #111;
       max-width: 1000px;
       margin: auto;
@@ -48,17 +48,17 @@
       display: none;
       transition: all 0.3s ease-in-out;
     }
-    .inline-toggle {
+    .toggle-icon {
       margin-left: 8px;
       cursor: pointer;
       background: none;
       color: #003366;
-      font-weight: bold;
+      font-weight: 600;
       border: none;
       font-size: 0.95em;
       padding: 0;
     }
-    .inline-toggle:hover {
+    .toggle-icon:hover {
       text-decoration: underline;
     }
     .card {
@@ -66,7 +66,7 @@
       border-radius: 12px;
       padding: 20px;
       margin-bottom: 25px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      box-shadow: 0 0 12px rgba(0,0,0,0.05);
     }
   </style>
 </head>
@@ -94,30 +94,31 @@
 
   <div class="card">
     <strong>Mantis Platform – CSAIL, MIT</strong><br>
-    Contributing as a student intern to Mantis, an AI-powered platform for cognitive cartography and data visualization.<br>
+    Contributing as a student intern to Mantis, an AI-powered platform for cognitive cartography and data visualization. My work involves integrating third-party APIs, designing interfaces, and integrating ML-based data exploration tools.
+      Supporting the development of an interactive research tool for large-scale data visualization and machine learning.
     <em>Multimedia Space</em>: Developed a feature to retrieve, structure, and export information from Wikipedia, PubMed, Reddit, and NASA.
-    <button class="inline-toggle" onclick="toggleImage(this)">Show Image</button>
-    <div class="image-container"><img src="multimedia.jpeg" alt="Multimedia space"></div>
+    <button class="toggle-icon" onclick="toggleImage(this)">⯈ Show Image</button>
+    <div class="image-container"><img src="multimedia.jpeg" alt="Multimedia Space"></div>
 
     <br><em>Gradient Visualization</em>: Built the visualization to display feature change in the axes of variation in embedded spaces.
-    <button class="inline-toggle" onclick="toggleImage(this)">Show Image</button>
+    <button class="toggle-icon" onclick="toggleImage(this)">⯈ Show Image</button>
     <div class="image-container"><img src="gradients.png" alt="Gradients"></div>
 
     <br><em>Gmail Integration</em>: Created the flow to authenticate users and generate structured data spaces from email content.
-    <button class="inline-toggle" onclick="toggleImage(this)">Show Image</button>
+    <button class="toggle-icon" onclick="toggleImage(this)">⯈ Show Image</button>
     <div class="image-container"><img src="gmail.png" alt="Gmail Integration"></div>
 
-    <br>Part of the core feature planning and leadership within the Mantis team.
+    <br>Also part of the core feature planning and leadership within the Mantis team.
   </div>
 
   <div class="card">
     <strong>Independent Machine Learning Research</strong><br>
     Trained five deep learning models on the ORCHID dataset for oral cancer classification. Used Grad-CAM to interpret features.
-    <button class="inline-toggle" onclick="toggleImage(this)">Show Image</button>
-    <div class="image-container"><img src="gradcam_mdoscc (1).png" alt="GradCAM MDOSCC"></div>
+    <button class="toggle-icon" onclick="toggleImage(this)">⯈ Show Image</button>
+    <div class="image-container"><img src="gradcam_mdoscc (1).png" alt="GradCAM"></div>
 
-    <br>Also created confusion matrix summaries to identify key overlap zones in model predictions.
-    <button class="inline-toggle" onclick="toggleImage(this)">Show Image</button>
+    <br>Created confusion matrix summaries to identify key overlap zones in predictions.
+    <button class="toggle-icon" onclick="toggleImage(this)">⯈ Show Image</button>
     <div class="image-container"><img src="confusion_matrix_percentage (6).png" alt="Confusion Matrix"></div>
 
     <br><a href="https://github.com/ZeidAl-Ruzouq/AI-Educational-Tools" target="_blank">⮞ GitHub Repo</a>
@@ -125,13 +126,13 @@
 
   <div class="card">
     <strong>AI Educational Tools</strong><br>
-    Built web-based educational tools including a Gemini-powered chatbot for students and a PowerPoint-to-Quiz generator.<br>
-    <button class="inline-toggle" onclick="toggleImage(this)">Show Image</button>
+    Built educational tools including a Gemini-powered chatbot for students and a PowerPoint-to-Quiz generator.
+    <button class="toggle-icon" onclick="toggleImage(this)">⯈ Show Image</button>
     <div class="image-container"><img src="chatbot.png" alt="Chatbot Tool"></div>
 
-    <br>Used large language models to generate assessments from lecture slides.
-    <button class="inline-toggle" onclick="toggleImage(this)">Show Image</button>
-    <div class="image-container"><img src="AI-QUIZ.png" alt="AI Quiz Tool"></div>
+    <br>Used LLMs to generate assessments from lecture slides.
+    <button class="toggle-icon" onclick="toggleImage(this)">⯈ Show Image</button>
+    <div class="image-container"><img src="AI-QUIZ.png" alt="Quiz Generator"></div>
 
     <br><a href="https://github.com/ZeidAl-Ruzouq/convnext-results-oral-cancer" target="_blank">⮞ GitHub Repo</a>
   </div>
@@ -148,7 +149,7 @@
       const container = button.nextElementSibling;
       const isVisible = container.style.display === 'block';
       container.style.display = isVisible ? 'none' : 'block';
-      button.textContent = isVisible ? 'Show Image' : 'Hide Image';
+      button.textContent = isVisible ? '⯈ Show Image' : '⯆ Hide Image';
     }
   </script>
 
