@@ -18,10 +18,15 @@
       margin-bottom: 5px;
     }
     h2 {
-      font-size: 1.3em;
-      border-bottom: 1px solid #ccc;
+      font-size: 1.4em;
       margin-top: 2em;
       padding-bottom: 6px;
+      border-bottom: 2px solid #ccc;
+    }
+    h3 {
+      font-size: 1.2em;
+      margin-top: 1.5em;
+      color: #003366;
     }
     p, li {
       font-size: 1.05em;
@@ -37,9 +42,12 @@
     a:hover {
       text-decoration: underline;
     }
-    img {
+    img.preview {
+      width: 100%;
+      max-width: 650px;
       border-radius: 8px;
-      margin-bottom: 20px;
+      margin: 15px 0;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
   </style>
 </head>
@@ -63,23 +71,39 @@
     I’m a developer and research intern focused on building intelligent systems and modern web applications. My work combines software engineering, interface design, and applied machine learning. I have experience delivering full-stack features, integrating third-party APIs, and contributing to research platforms that support data exploration and AI-powered analysis.
   </p>
 
-  <h2>Experience</h2>
-  <ul>
-    <li>
-      <strong>Mantis Platform – CSAIL, MIT</strong><br>
-      Supporting the development of an interactive research tool for large-scale data visualization and machine learning.
-      <ul>
-        <li>Designed and implemented frontend components for interactive data exploration.</li>
-        <li>Built backend workflows for pulling and structuring content from sources like Wikipedia, Reddit, and PubMed.</li>
-        <li>Developed tools for extracting structured content from email using Gmail API and user authentication.</li>
-        <li>Contributed to interface design, feature planning, and implementation across the platform.</li>
-      </ul>
-    </li>
-    <li>
-      <strong>Independent Machine Learning Research</strong><br>
-      Researching image classification using deep learning models for histological cancer detection. Focus areas include training pipelines, model evaluation, and interpretability methods.
-    </li>
-  </ul>
+  <h2>Projects & Research</h2>
+
+  <h3>Mantis Platform – CSAIL, MIT</h3>
+  <p>
+    Supporting the development of an interactive research tool for large-scale data visualization and machine learning.
+    <ul>
+      <li>Designed and implemented frontend components for interactive data exploration.</li>
+      <li>Built backend workflows for pulling and structuring content from sources like Wikipedia, Reddit, and PubMed.</li>
+      <li>Developed tools for extracting structured content from email using Gmail API and user authentication.</li>
+      <li>Contributed to interface design, feature planning, and implementation across the platform.</li>
+    </ul>
+  </p>
+
+  <h3>Independent Machine Learning Research</h3>
+  <p>
+    Conducting research in medical imaging using deep learning. Includes model training, Grad-CAM visualizations, and confusion matrix evaluation for oral cancer classification.
+    <img src="gradcam_mdoscc (1).png" alt="Grad-CAM result" class="preview">
+    <img src="confusion_matrix_percentage (6).png" alt="Confusion Matrix" class="preview">
+  </p>
+
+  <h3>AI Educational Tools</h3>
+  <p>
+    A suite of AI-powered tools for enhancing school systems. Includes:
+    <ul>
+      <li>An interactive chatbot for school websites that answers questions using Gemini API and Google Sheets.</li>
+      <li>A presentation-to-quiz converter that generates multiple-choice questions from PowerPoint slides.</li>
+    </ul>
+    These tools demonstrate dynamic data handling, prompt engineering, and user-focused design for educational environments.
+    <br>
+    <a href="https://github.com/ZeidAl-Ruzouq" target="_blank">View on GitHub</a>
+  </p>
+  <img src="chatbot.png" alt="Chatbot Screenshot" class="preview">
+  <img src="AI-QUIZ.png" alt="PPTX Quiz Generator Preview" class="preview">
 
   <h2>Skills</h2>
   <ul>
