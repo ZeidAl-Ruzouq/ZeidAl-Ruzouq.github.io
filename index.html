@@ -9,7 +9,7 @@
       font-family: 'Segoe UI', sans-serif;
       margin: 0;
       padding: 0;
-      background: linear-gradient(to bottom right, #f0f4f8, #dfefff);
+      background: radial-gradient(circle at top left, #e9f5ff, #cce0ff);
       color: #222;
     }
     .container {
@@ -46,39 +46,36 @@
     a:hover {
       text-decoration: underline;
     }
-    .project-img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 8px;
+    .project-img-wrapper {
       margin: 10px 0;
+      position: relative;
     }
-    .toggle-container {
-      text-align: center;
-      margin: 50px 0 0;
-    }
-    .toggle-btn {
-      font-size: 2em;
+    .arrow-toggle {
       background: none;
       border: none;
+      font-size: 1.8em;
       cursor: pointer;
-      transition: transform 0.3s;
+      color: #003366;
+      position: absolute;
+      top: 5px;
+      right: 5px;
     }
-    .toggle-btn:hover {
-      transform: scale(1.1);
+    .project-img {
+      display: none;
+      width: 100%;
+      max-width: 800px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      margin-top: 10px;
     }
-    #ai-content {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.6s ease;
-    }
-    #ai-content.show {
-      max-height: 1200px;
+    .show-img {
+      display: block;
     }
   </style>
   <script>
-    function toggleAI() {
-      const content = document.getElementById('ai-content');
-      content.classList.toggle('show');
+    function toggleImage(id) {
+      const img = document.getElementById(id);
+      img.classList.toggle('show-img');
     }
   </script>
 </head>
@@ -107,36 +104,50 @@
     <h3>Mantis Platform – CSAIL, MIT</h3>
     <p>Built frontend and backend tools for large-scale interactive data exploration.</p>
     <ul>
-      <li>Gradient visualization tools <img src="gradients.png" class="project-img"></li>
-      <li>Gmail-based email analysis <img src="gmail.png" class="project-img"></li>
-      <li>Multimedia space integration <img src="multimedia.jpeg" class="project-img"></li>
+      <li>Gradient visualization tools
+        <div class="project-img-wrapper">
+          <button class="arrow-toggle" onclick="toggleImage('img1')">⤵</button>
+          <img src="gradients.png" id="img1" class="project-img">
+        </div>
+      </li>
+      <li>Gmail-based email analysis
+        <div class="project-img-wrapper">
+          <button class="arrow-toggle" onclick="toggleImage('img2')">⤵</button>
+          <img src="gmail.png" id="img2" class="project-img">
+        </div>
+      </li>
+      <li>Multimedia space integration
+        <div class="project-img-wrapper">
+          <button class="arrow-toggle" onclick="toggleImage('img3')">⤵</button>
+          <img src="multimedia.jpeg" id="img3" class="project-img">
+        </div>
+      </li>
     </ul>
     <a href="https://github.com/ZeidAl-Ruzouq" target="_blank">View Source</a>
 
     <h3>Independent ML Model – Oral Cancer Classification</h3>
     <p>Trained ConvNeXt-Tiny to classify histopathology slides, with Grad-CAM and evaluation visualizations.</p>
-    <img src="gradcam_mdoscct (1).png" class="project-img">
-    <img src="confusion_matrix_percentage (6).png" class="project-img">
-    <a href="https://github.com/ZeidAl-Ruzouq/convnext-results" target="_blank">View Project</a>
-
-    <div class="toggle-container">
-      <button class="toggle-btn" onclick="toggleAI()">⬇️ Show AI Educational Tools</button>
+    <div class="project-img-wrapper">
+      <button class="arrow-toggle" onclick="toggleImage('img4')">⤵</button>
+      <img src="gradcam_mdoscct (1).png" id="img4" class="project-img">
     </div>
-
-    <div id="ai-content">
-      <h3>AI Educational Tools</h3>
-      <p><strong>1. School Website Chatbot</strong><br>
-      Real-time Gemini-powered chatbot integrated with Google Sheets API for dynamic student interactions.<br>
-      <img src="chatbot.png" class="project-img">
-      <a href="https://github.com/ZeidAl-Ruzouq/ai-chatbot">GitHub Repo</a> | <a href="https://youtu.be/demo">Demo Video</a>
-      </p>
-
-      <p><strong>2. PPTX-to-Quiz Generator</strong><br>
-      Converts PowerPoint content into multiple-choice quizzes using AI. Useful for teachers and online educators.<br>
-      <img src="AI-QUIZ.png" class="project-img">
-      <a href="https://github.com/ZeidAl-Ruzouq/pptx-quiz">GitHub Repo</a> | <a href="https://youtu.be/demo">Demo Video</a>
-      </p>
+    <div class="project-img-wrapper">
+      <button class="arrow-toggle" onclick="toggleImage('img5')">⤵</button>
+      <img src="confusion_matrix_percentage (6).png" id="img5" class="project-img">
     </div>
+    <a href="https://github.com/ZeidAl-Ruzouq/convnext-results-oral-cancer" target="_blank">View Project</a>
+
+    <h3>AI Educational Tools</h3>
+    <p>A suite of tools for school environments powered by Gemini and presentation-to-quiz conversion logic.</p>
+    <div class="project-img-wrapper">
+      <button class="arrow-toggle" onclick="toggleImage('img6')">⤵</button>
+      <img src="chatbot.png" id="img6" class="project-img">
+    </div>
+    <div class="project-img-wrapper">
+      <button class="arrow-toggle" onclick="toggleImage('img7')">⤵</button>
+      <img src="AI-QUIZ.png" id="img7" class="project-img">
+    </div>
+    <a href="https://github.com/ZeidAl-Ruzouq/AI-Educational-Tools" target="_blank">View Project</a>
 
     <h2>Skills</h2>
     <ul>
