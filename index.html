@@ -53,12 +53,16 @@
     .arrow-toggle {
       background: none;
       border: none;
-      font-size: 1.8em;
+      font-size: 1.2em;
       cursor: pointer;
       color: #003366;
-      position: absolute;
-      top: 5px;
-      right: 5px;
+      margin-left: 10px;
+    }
+    .view-img-label {
+      font-size: 0.95em;
+      color: #444;
+      margin-left: 6px;
+      font-style: italic;
     }
     .project-img {
       display: none;
@@ -102,49 +106,55 @@
     <h2>Projects & Research</h2>
 
     <h3>Mantis Platform – CSAIL, MIT</h3>
-    <p>Built frontend and backend tools for large-scale interactive data exploration.</p>
+    <p>Contributing to a large-scale AI research platform for cognitive cartography and human-AI collaboration in scientific workflows. My work spans end-to-end feature design, frontend interface components, and backend integrations.</p>
     <ul>
-      <li>Gradient visualization tools
+      <li>Designed interactive gradient visualization tools to highlight change in latent feature spaces based on user selection.
+        <button class="arrow-toggle" onclick="toggleImage('img1')">⤵</button>
+        <span class="view-img-label">View image</span>
         <div class="project-img-wrapper">
-          <button class="arrow-toggle" onclick="toggleImage('img1')">⤵</button>
           <img src="gradients.png" id="img1" class="project-img">
         </div>
       </li>
-      <li>Gmail-based email analysis
+      <li>Built Gmail authentication flow and backend logic to extract semantic context from user emails using transformers.
+        <button class="arrow-toggle" onclick="toggleImage('img2')">⤵</button>
+        <span class="view-img-label">View image</span>
         <div class="project-img-wrapper">
-          <button class="arrow-toggle" onclick="toggleImage('img2')">⤵</button>
           <img src="gmail.png" id="img2" class="project-img">
         </div>
       </li>
-      <li>Multimedia space integration
+      <li>Integrated external sources like Wikipedia, PubMed, and Reddit into a unified multimedia data space for AI-based exploration.
+        <button class="arrow-toggle" onclick="toggleImage('img3')">⤵</button>
+        <span class="view-img-label">View image</span>
         <div class="project-img-wrapper">
-          <button class="arrow-toggle" onclick="toggleImage('img3')">⤵</button>
           <img src="multimedia.jpeg" id="img3" class="project-img">
         </div>
       </li>
     </ul>
-    <a href="https://github.com/ZeidAl-Ruzouq" target="_blank">View Source</a>
 
     <h3>Independent ML Model – Oral Cancer Classification</h3>
-    <p>Trained ConvNeXt-Tiny to classify histopathology slides, with Grad-CAM and evaluation visualizations.</p>
+    <p>Built and evaluated a deep learning pipeline using ConvNeXt-Tiny to classify oral cancer from histology slide images. Work included preprocessing H&E-stained data, uncertainty quantification via dropout, and Grad-CAM visualization.</p>
     <div class="project-img-wrapper">
       <button class="arrow-toggle" onclick="toggleImage('img4')">⤵</button>
+      <span class="view-img-label">View image</span>
       <img src="gradcam_mdoscct (1).png" id="img4" class="project-img">
     </div>
     <div class="project-img-wrapper">
       <button class="arrow-toggle" onclick="toggleImage('img5')">⤵</button>
+      <span class="view-img-label">View image</span>
       <img src="confusion_matrix_percentage (6).png" id="img5" class="project-img">
     </div>
     <a href="https://github.com/ZeidAl-Ruzouq/convnext-results-oral-cancer" target="_blank">View Project</a>
 
     <h3>AI Educational Tools</h3>
-    <p>A suite of tools for school environments powered by Gemini and presentation-to-quiz conversion logic.</p>
+    <p>Developed a set of intelligent web tools to enhance digital learning environments. Tools include an AI chatbot for schools with Gemini API, and a PowerPoint-to-quiz generator powered by language models.</p>
     <div class="project-img-wrapper">
       <button class="arrow-toggle" onclick="toggleImage('img6')">⤵</button>
+      <span class="view-img-label">View image</span>
       <img src="chatbot.png" id="img6" class="project-img">
     </div>
     <div class="project-img-wrapper">
       <button class="arrow-toggle" onclick="toggleImage('img7')">⤵</button>
+      <span class="view-img-label">View image</span>
       <img src="AI-QUIZ.png" id="img7" class="project-img">
     </div>
     <a href="https://github.com/ZeidAl-Ruzouq/AI-Educational-Tools" target="_blank">View Project</a>
