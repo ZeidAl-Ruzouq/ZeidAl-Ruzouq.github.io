@@ -6,112 +6,145 @@
   <link rel="icon" href="favicon.png" type="image/png">
   <style>
     body {
-      font-family: 'Helvetica Neue', sans-serif;
-      max-width: 850px;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom right, #f0f4f8, #dfefff);
+      color: #222;
+    }
+    .container {
+      max-width: 1100px;
       margin: auto;
       padding: 40px 20px;
-      background-color: #fcfcfc;
-      color: #111;
     }
     h1 {
-      font-size: 2.3em;
-      margin-bottom: 5px;
+      font-size: 2.6em;
+      margin-bottom: 0;
     }
     h2 {
-      font-size: 1.4em;
+      font-size: 1.5em;
+      border-bottom: 2px solid #ccc;
       margin-top: 2em;
       padding-bottom: 6px;
-      border-bottom: 2px solid #ccc;
     }
     h3 {
-      font-size: 1.2em;
       margin-top: 1.5em;
+      font-size: 1.2em;
       color: #003366;
     }
     p, li {
-      font-size: 1.05em;
-      line-height: 1.6;
+      font-size: 1.1em;
+      line-height: 1.7;
     }
     ul {
       padding-left: 20px;
     }
     a {
-      color: #003366;
+      color: #0056b3;
       text-decoration: none;
     }
     a:hover {
       text-decoration: underline;
     }
-    img.preview {
-      width: 100%;
-      max-width: 650px;
+    .project-img {
+      max-width: 100%;
+      height: auto;
       border-radius: 8px;
-      margin: 15px 0;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      margin: 10px 0;
+    }
+    .toggle-container {
+      text-align: center;
+      margin: 50px 0 0;
+    }
+    .toggle-btn {
+      font-size: 2em;
+      background: none;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    .toggle-btn:hover {
+      transform: scale(1.1);
+    }
+    #ai-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.6s ease;
+    }
+    #ai-content.show {
+      max-height: 1200px;
     }
   </style>
+  <script>
+    function toggleAI() {
+      const content = document.getElementById('ai-content');
+      content.classList.toggle('show');
+    }
+  </script>
 </head>
 <body>
+  <div class="container">
+    <h1>Zeid Al-Ruzouq</h1>
+    <img src="profile.png" alt="Zeid Al-Ruzouq" width="180">
+    <p><strong>Full-Stack Developer & AI Research Intern</strong><br>
+      <a href="https://github.com/ZeidAl-Ruzouq" target="_blank">GitHub Profile</a>
+    </p>
 
-  <h1>Zeid Al-Ruzouq</h1>
-  <img src="profile.png" alt="Zeid Al-Ruzouq" width="180">
-  <p><strong>Full-Stack Developer & AI Research Intern</strong><br>
-    <a href="https://github.com/ZeidAl-Ruzouq" target="_blank">GitHub Profile</a>
-  </p>
+    <h2>Contact</h2>
+    <p>
+      Email: <a href="mailto:zalruzouq@gmail.com">zalruzouq@gmail.com</a><br>
+      Phone: +1 (225) 575-0531<br>
+      Location: Allen, Texas
+    </p>
 
-  <h2>Contact</h2>
-  <p>
-    Email: <a href="mailto:zalruzouq@gmail.com">zalruzouq@gmail.com</a><br>
-    Phone: +1 (225) 575-0531<br>
-    Location: Allen, Texas
-  </p>
+    <h2>Summary</h2>
+    <p>
+      I’m a developer and research intern focused on building intelligent systems and modern web applications. My work combines software engineering, interface design, and applied machine learning. I have experience delivering full-stack features, integrating third-party APIs, and contributing to research platforms that support data exploration and AI-powered analysis.
+    </p>
 
-  <h2>Summary</h2>
-  <p>
-    I’m a developer and research intern focused on building intelligent systems and modern web applications. My work combines software engineering, interface design, and applied machine learning. I have experience delivering full-stack features, integrating third-party APIs, and contributing to research platforms that support data exploration and AI-powered analysis.
-  </p>
+    <h2>Projects & Research</h2>
 
-  <h2>Projects & Research</h2>
-
-  <h3>Mantis Platform – CSAIL, MIT</h3>
-  <p>
-    Supporting the development of an interactive research tool for large-scale data visualization and machine learning.
+    <h3>Mantis Platform – CSAIL, MIT</h3>
+    <p>Built frontend and backend tools for large-scale interactive data exploration.</p>
     <ul>
-      <li>Designed and implemented frontend components for interactive data exploration.</li>
-      <li>Built backend workflows for pulling and structuring content from sources like Wikipedia, Reddit, and PubMed.</li>
-      <li>Developed tools for extracting structured content from email using Gmail API and user authentication.</li>
-      <li>Contributed to interface design, feature planning, and implementation across the platform.</li>
+      <li>Gradient visualization tools <img src="gradients.png" class="project-img"></li>
+      <li>Gmail-based email analysis <img src="gmail.png" class="project-img"></li>
+      <li>Multimedia space integration <img src="multimedia.jpeg" class="project-img"></li>
     </ul>
-  </p>
+    <a href="https://github.com/ZeidAl-Ruzouq" target="_blank">View Source</a>
 
-  <h3>Independent Machine Learning Research</h3>
-  <p>
-    Conducting research in medical imaging using deep learning. Includes model training, Grad-CAM visualizations, and confusion matrix evaluation for oral cancer classification.
-    <img src="gradcam_mdoscc (1).png" alt="Grad-CAM result" class="preview">
-    <img src="confusion_matrix_percentage (6).png" alt="Confusion Matrix" class="preview">
-  </p>
+    <h3>Independent ML Model – Oral Cancer Classification</h3>
+    <p>Trained ConvNeXt-Tiny to classify histopathology slides, with Grad-CAM and evaluation visualizations.</p>
+    <img src="gradcam_mdoscct (1).png" class="project-img">
+    <img src="confusion_matrix_percentage (6).png" class="project-img">
+    <a href="https://github.com/ZeidAl-Ruzouq/convnext-results" target="_blank">View Project</a>
 
-  <h3>AI Educational Tools</h3>
-  <p>
-    A suite of AI-powered tools for enhancing school systems. Includes:
+    <div class="toggle-container">
+      <button class="toggle-btn" onclick="toggleAI()">⬇️ Show AI Educational Tools</button>
+    </div>
+
+    <div id="ai-content">
+      <h3>AI Educational Tools</h3>
+      <p><strong>1. School Website Chatbot</strong><br>
+      Real-time Gemini-powered chatbot integrated with Google Sheets API for dynamic student interactions.<br>
+      <img src="chatbot.png" class="project-img">
+      <a href="https://github.com/ZeidAl-Ruzouq/ai-chatbot">GitHub Repo</a> | <a href="https://youtu.be/demo">Demo Video</a>
+      </p>
+
+      <p><strong>2. PPTX-to-Quiz Generator</strong><br>
+      Converts PowerPoint content into multiple-choice quizzes using AI. Useful for teachers and online educators.<br>
+      <img src="AI-QUIZ.png" class="project-img">
+      <a href="https://github.com/ZeidAl-Ruzouq/pptx-quiz">GitHub Repo</a> | <a href="https://youtu.be/demo">Demo Video</a>
+      </p>
+    </div>
+
+    <h2>Skills</h2>
     <ul>
-      <li>An interactive chatbot for school websites that answers questions using Gemini API and Google Sheets.</li>
-      <li>A presentation-to-quiz converter that generates multiple-choice questions from PowerPoint slides.</li>
+      <li><strong>Programming:</strong> Python, JavaScript, TypeScript, HTML, CSS</li>
+      <li><strong>Frameworks & Libraries:</strong> React, Django, Node.js</li>
+      <li><strong>Tools & APIs:</strong> Git, GitHub, REST APIs, OAuth</li>
+      <li><strong>Languages:</strong> English (fluent), Arabic (fluent), French (basic)</li>
     </ul>
-    These tools demonstrate dynamic data handling, prompt engineering, and user-focused design for educational environments.
-    <br>
-    <a href="https://github.com/ZeidAl-Ruzouq" target="_blank">View on GitHub</a>
-  </p>
-  <img src="chatbot.png" alt="Chatbot Screenshot" class="preview">
-  <img src="AI-QUIZ.png" alt="PPTX Quiz Generator Preview" class="preview">
-
-  <h2>Skills</h2>
-  <ul>
-    <li><strong>Programming:</strong> Python, JavaScript, TypeScript, HTML, CSS</li>
-    <li><strong>Frameworks & Libraries:</strong> React, Django, Node.js</li>
-    <li><strong>Tools & APIs:</strong> Git, GitHub, REST APIs, OAuth</li>
-    <li><strong>Languages:</strong> English (fluent), Arabic (fluent), French (basic)</li>
-  </ul>
-
+  </div>
 </body>
 </html>
