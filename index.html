@@ -422,7 +422,7 @@ Now, answer the following user message based on the above background:
   `;
 
   try {
-    const response = await fetch("https://chatbot-backend.onrender.com/api/generate", {
+    const response = await fetch("https://Backend.onrender.com/api/generate", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ prompt })
