@@ -63,13 +63,60 @@
       border-radius: var(--radius);
       box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     }
+    /* Chatbot styles */
+    #chat-toggle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      font-size: 28px;
+      cursor: pointer;
+      z-index: 1000;
+    }
+    .chatbox {
+      position: fixed;
+      bottom: 70px;
+      right: 20px;
+      width: 300px;
+      height: 350px;
+      background: #fff;
+      border: 1px solid #aaa;
+      border-radius: 8px;
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      z-index: 999;
+    }
+    .messages-container {
+      padding: 10px;
+      height: 80%;
+      overflow-y: auto;
+      font-size: 14px;
+    }
+    .input-container {
+      display: flex;
+      padding: 10px;
+      gap: 5px;
+    }
+    .input-container input {
+      flex: 1;
+      padding: 6px;
+      font-size: 14px;
+    }
+    .input-container button {
+      padding: 6px 10px;
+      background: var(--primary);
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
   <div class="container">
 
     <h1>Zeid Al‑Ruzouq</h1>
-    <img src="profile.png" alt="Zeid Al-Ruzouq" width="180">
+    <img src="profile.png" alt="Zeid Al‑Ruzouq" width="180">
     <p>
       <strong>Full‑Stack Developer & AI Research Intern</strong><br>
       <a href="https://github.com/ZeidAl-Ruzouq" target="_blank">GitHub Profile</a>
@@ -83,7 +130,7 @@
 
     <h2>Summary</h2>
     <p>
-      I’m a developer and research intern focused on building intelligent systems and modern web applications. My work combines software engineering, interface design, and applied machine learning. I have experience delivering full-stack features, integrating third-party APIs, and contributing to research platforms that support data exploration and AI-powered analysis.
+      I’m a developer and research intern focused on building intelligent systems and modern web applications. My work combines software engineering, interface design, and applied machine learning. I have experience delivering full‑stack features, integrating third‑party APIs, and contributing to research platforms that support data exploration and AI‑powered analysis.
     </p>
 
     <h2>Experience</h2>
@@ -91,37 +138,71 @@
 
       <div class="card">
         <strong>Mantis Platform – CSAIL, MIT</strong><br>
-        Intern in Mantis, an AI-powered platform for cognitive cartography and data visualization. My work involves integrating third-party APIs, designing interfaces, and integrating ML-based data exploration tools.
-        Supporting the development of an interactive research tool for large-scale data visualization and machine learning.
+        Intern in Mantis, an AI‑powered platform for cognitive cartography and data visualization. My work involves integrating third‑party APIs, designing interfaces, and integrating ML‑based data exploration tools.
         <ul>
-          <li><em>Multimedia Space</em>: Developed a feature to retrieve, structure, and export information from external sources such as Wikipedia, PubMed, Reddit, and NASA. </li>
-          <li><em>Gradient Visualization and Integration</em>: Built the visualization to display feature change in the axes of variation in embedded spaces.</li>
-          <li><em>Gmail Integration</em>: Created the flow to authenticate users and generate structured data spaces from email content.</li>
-          <li>Part in core feature planning and serve in a leadership role within the Mantis leadership team.</li>
+          <li><em>Multimedia Space:</em> Developed a feature to retrieve, structure, and export information from external sources such as Wikipedia, PubMed, Reddit, and NASA.</li>
+          <li><em>Gradient Visualization and Integration:</em> Built the visualization to display feature change in the axes of variation in embedded spaces.</li>
+          <li><em>Gmail Integration:</em> Created the flow to authenticate users and generate structured data spaces from email content.</li>
+          <li>Participated in core feature planning and served in a leadership role within the Mantis team.</li>
         </ul>
       </div>
 
       <div class="card">
-        <strong> Machine Learning in Oral Cancer Research</strong><br>
-       Trained and evaluated five deep learning models to assess performance in fine-grained classification of oral cancer subtypes. Applied Grad-CAM for model interpretability and performed latent space uncertainty analysis to identify ambiguous prediction zones and complementary model behaviors.
+        <strong>Machine Learning in Oral Cancer Research</strong><br>
+        Trained and evaluated five deep learning models to assess performance in fine‑grained classification of oral cancer subtypes. Applied Grad‑CAM for model interpretability and performed latent space uncertainty analysis to identify ambiguous prediction zones and complementary model behaviors.
+        <br><br>
         <a href="https://github.com/ZeidAl-Ruzouq/convnext-results-oral-cancer" target="_blank">⮞ GitHub Repo</a>
       </div>
 
       <div class="card">
         <strong>AI Educational Tools</strong><br>
-        Developed a set of intelligent web tools to enhance digital learning environments. Tools include an AI chatbot for students and parents, as well as using large language models to generate assessments from lecture slides.
+        Developed a set of intelligent web tools to enhance digital learning environments. Tools include an AI chatbot for students and parents, as well as leveraging large language models to generate assessments from lecture slides.
+        <br><br>
         <a href="https://github.com/ZeidAl-Ruzouq/AI-Educational-Tools" target="_blank">⮞ GitHub Repo</a>
       </div>
 
     </div>
 
-<h2>Skills</h2>
-<ul>
-  <li><strong>Languages:</strong> Python, JavaScript, TypeScript, HTML, CSS</li>
-  <li><strong>Frameworks & Libraries:</strong> React, Node.js, Django, PyTorch, TensorFlow, Pandas, NumPy</li>
-  <li><strong>Tools & Platforms:</strong> Git, GitHub, VS Code, Jupyter, Firebase, REST APIs</li>
-</ul>
+    <h2>Skills</h2>
+    <ul>
+      <li><strong>Languages:</strong> Python, JavaScript, TypeScript, HTML, CSS</li>
+      <li><strong>Frameworks & Libraries:</strong> React, Node.js, Django, PyTorch, TensorFlow, Pandas, NumPy</li>
+      <li><strong>Tools & Platforms:</strong> Git, GitHub, VS Code, Jupyter, Firebase, REST APIs</li>
+    </ul>
 
   </div>
+
+  <!-- Chatbot UI -->
+  <div id="chat-toggle" onclick="toggleChat()">💬</div>
+  <div id="chatbox" class="chatbox">
+    <div id="chat-messages" class="messages-container"></div>
+    <div class="input-container">
+      <input type="text" id="chat-input" placeholder="Ask me something..." />
+      <button onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+  <script>
+    function toggleChat() {
+      const box = document.getElementById('chatbox');
+      box.style.display = (!box.style.display || box.style.display === 'none') ? 'flex' : 'none';
+    }
+
+    function sendMessage() {
+      const input = document.getElementById('chat-input');
+      const msg = input.value.trim();
+      if (!msg) return;
+
+      const messages = document.getElementById('chat-messages');
+      const userMsg = document.createElement('div');
+      userMsg.textContent = msg;
+      userMsg.style.textAlign = 'right';
+      messages.appendChild(userMsg);
+
+      input.value = '';
+      messages.scrollTop = messages.scrollHeight;
+    }
+    }
+  </script>
 </body>
 </html>
