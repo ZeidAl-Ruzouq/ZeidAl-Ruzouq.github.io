@@ -8,15 +8,14 @@
   <style>
     :root {
       --primary: #003366;
-      --bg: #ffffff;       /* white page background */
-      --card-bg: #f1f1f1;   /* light gray cards */
+      --bg: #ffffff;
+      --card-bg: #f1f1f1;
       --radius: 8px;
       --gap: 20px;
     }
     * { box-sizing: border-box; }
     body {
-      margin: 0;
-      padding: 0;
+      margin: 0; padding: 0;
       font-family: 'Helvetica Neue', sans-serif;
       background-color: var(--bg);
       color: #111;
@@ -27,11 +26,7 @@
       margin: 0 auto;
       padding: var(--gap);
     }
-    h1 {
-      font-size: 2.3em;
-      margin-bottom: 5px;
-      color: var(--primary);
-    }
+    h1 { font-size: 2.3em; margin-bottom: 5px; color: var(--primary); }
     h2 {
       font-size: 1.4em;
       border-bottom: 2px solid #ddd;
@@ -39,20 +34,11 @@
       margin-top: 40px;
       color: var(--primary);
     }
-    p, li {
-      font-size: 1.05em;
-    }
-    ul {
-      padding-left: 20px;
-      margin: 10px 0;
-    }
-    a {
-      color: var(--primary);
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
+    p, li { font-size: 1.05em; }
+    ul { padding-left: 20px; margin: 10px 0; }
+    a { color: var(--primary); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
     .projects {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -69,56 +55,54 @@
     /* Chatbot styles */
     .gif-container {
       position: fixed;
-      bottom: 25px;
-      right: 25px;
-      display: block;
+      bottom: 20px;
+      right: 20px;
+      width: 100px;
       cursor: pointer;
       z-index: 1000;
     }
     .intro-message {
       position: fixed;
-      bottom: 160px;
-      right: 25px;
+      bottom: 120px;
+      right: 30px;
       background-color: rgba(255,255,255,0.95);
       border: 1px solid #ccc;
       padding: 10px;
       border-radius: 8px;
-      font-size: 11px;
-      max-width: 200px;
+      font-size: 13px;
+      max-width: 180px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      display: block;
       z-index: 1000;
     }
     .chat-box {
       position: fixed;
-      bottom: 25px;
-      right: 25px;
+      bottom: 20px;
+      right: 20px;
       background-color: rgba(255,255,255,0.95);
       border: 1px solid #ccc;
-      padding: 10px;
       border-radius: 8px;
-      font-size: 14px;
       width: 300px;
-      height: 300px;
+      height: 350px;
       display: none;
       overflow: hidden;
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      user-select: none;
       z-index: 1001;
     }
-    .chat-box .messages-container {
+    .messages-container {
       display: flex;
       flex-direction: column;
-      gap: 15px;
+      gap: 12px;
       overflow-y: auto;
-      height: calc(100% - 50px);
-      padding-bottom: 10px;
+      height: calc(100% - 60px);
+      padding: 10px;
     }
     .message {
-      padding: 10px;
-      border-radius: 8px;
+      padding: 8px 12px;
+      border-radius: 20px;
       max-width: 80%;
       word-wrap: break-word;
+      position: relative;
+      line-height: 1.4;
     }
     .user-message {
       align-self: flex-end;
@@ -127,8 +111,23 @@
     }
     .bot-message {
       align-self: flex-start;
-      background-color: rgba(255,255,255,0.8);
+      background-color: rgba(255,255,255,0.9);
       border: 1px solid #ccc;
+    }
+    .typing .dot {
+      display: inline-block;
+      width: 6px; height: 6px;
+      margin: 0 2px;
+      background-color: #999;
+      border-radius: 50%;
+      opacity: 0.2;
+      animation: blink 1.4s infinite both;
+    }
+    .typing .dot:nth-child(2) { animation-delay: 0.2s; }
+    .typing .dot:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes blink {
+      0%, 80%, 100% { opacity: 0.2; }
+      40% { opacity: 1; }
     }
     .input-container {
       position: absolute;
@@ -136,7 +135,7 @@
       left: 10px;
       right: 10px;
       display: flex;
-      gap: 10px;
+      gap: 8px;
     }
     .input-container input {
       flex: 1;
@@ -161,38 +160,41 @@
     .resizer.top-right { right: -6px; top: -6px; cursor: nesw-resize; }
     .resizer.bottom-left { left: -6px; bottom: -6px; cursor: nesw-resize; }
     .resizer.bottom-right { right: -6px; bottom: -6px; cursor: nwse-resize; }
-    .resizer.top, .resizer.bottom { position: absolute; height: 6px; width: 50px; left: 50%; transform: translateX(-50%); background: #000; cursor: ns-resize; }
+    .resizer.top, .resizer.bottom {
+      position: absolute; height: 6px; width: 50px;
+      left: 50%; transform: translateX(-50%);
+      background: #000; cursor: ns-resize;
+    }
     .resizer.top { top: -3px; }
     .resizer.bottom { bottom: -3px; }
-    .resizer.left, .resizer.right { position: absolute; width: 6px; height: 50px; top: 50%; transform: translateY(-50%); background: #000; cursor: ew-resize; }
+    .resizer.left, .resizer.right {
+      position: absolute; width: 6px; height: 50px;
+      top: 50%; transform: translateY(-50%);
+      background: #000; cursor: ew-resize;
+    }
     .resizer.left { left: -3px; }
     .resizer.right { right: -3px; }
   </style>
 </head>
 <body>
   <div class="container">
-
     <h1>Zeid Al‑Ruzouq</h1>
     <img src="profile.png" alt="Zeid Al‑Ruzouq" width="180">
     <p>
       <strong>Full‑Stack Developer & AI Research Intern</strong><br>
       <a href="https://github.com/ZeidAl-Ruzouq" target="_blank">GitHub Profile</a>
     </p>
-
     <h2>Contact</h2>
     <p>
       Email: <a href="mailto:zalruzouq@gmail.com">zalruzouq@gmail.com</a><br>
       Location: Allen, Texas
     </p>
-
     <h2>Summary</h2>
     <p>
       I’m a developer and research intern focused on building intelligent systems and modern web applications. My work combines software engineering, interface design, and applied machine learning. I have experience delivering full‑stack features, integrating third‑party APIs, and contributing to research platforms that support data exploration and AI‑powered analysis.
     </p>
-
     <h2>Experience</h2>
     <div class="projects">
-
       <div class="card">
         <strong>Mantis Platform – CSAIL, MIT</strong><br>
         Intern in Mantis, an AI‑powered platform for cognitive cartography and data visualization. My work involves integrating third‑party APIs, designing interfaces, and integrating ML‑based data exploration tools.
@@ -203,38 +205,33 @@
           <li>Part in core feature planning and served in a leadership role within the Mantis team.</li>
         </ul>
       </div>
-
       <div class="card">
         <strong>Machine Learning in Oral Cancer Research</strong><br>
         Trained and evaluated five deep learning models to assess performance in fine‑grained classification of oral cancer subtypes. Applied Grad‑CAM for model interpretability and performed latent space uncertainty analysis to identify ambiguous prediction zones and complementary model behaviors.
         <br><br>
         <a href="https://github.com/ZeidAl-Ruzouq/convnext-results-oral-cancer" target="_blank">⮞ GitHub Repo</a>
       </div>
-
       <div class="card">
         <strong>AI Educational Tools</strong><br>
         Developed a set of intelligent web tools to enhance digital learning environments. Tools include an AI chatbot for students and parents, as well as leveraging large language models to generate assessments from lecture slides.
         <br><br>
         <a href="https://github.com/ZeidAl-Ruzouq/AI-Educational-Tools" target="_blank">⮞ GitHub Repo</a>
       </div>
-
     </div>
-
     <h2>Skills</h2>
     <ul>
       <li><strong>Languages:</strong> Python, JavaScript, TypeScript, HTML, CSS</li>
       <li><strong>Frameworks & Libraries:</strong> React, Node.js, Django, PyTorch, TensorFlow, Pandas, NumPy</li>
       <li><strong>Tools & Platforms:</strong> Git, GitHub, VS Code, Jupyter, Firebase, REST APIs</li>
     </ul>
-
   </div>
 
   <!-- Chatbot UI -->
   <div id="gif-container" class="gif-container">
-    <img src="chatbot.gif" alt="Chatbot GIF" style="width:125px;">
+    <img src="chatbot.gif" alt="Chatbot GIF" style="width:100%;">
   </div>
   <div id="intro-message" class="intro-message">
-    Greetings! Click the bot to chat about my work.
+    Hi there! I’m Zeid – click me to chat.
   </div>
   <div id="chat-box" class="chat-box">
     <div id="messages-container" class="messages-container"></div>
@@ -259,7 +256,7 @@
       document.getElementById('intro-message').style.display = 'block';
     });
 
-    // Clicking GIF opens chat
+    // Open chat on click
     document.getElementById('gif-container').addEventListener('click', () => {
       document.getElementById('chat-box').style.display = 'block';
       document.getElementById('gif-container').style.display = 'none';
@@ -340,17 +337,35 @@
       });
     });
 
-    // Send message (mock backend)
+    // Send message with WhatsApp‑style typing animation
     async function sendMessage() {
       const input = document.getElementById('chat-input');
       const text = input.value.trim();
       if (!text) return;
-      const userDiv = document.createElement('div'); userDiv.className = 'message user-message'; userDiv.textContent = text;
+      const messagesContainer = document.getElementById('messages-container');
+
+      // user message
+      const userDiv = document.createElement('div');
+      userDiv.className = 'message user-message';
+      userDiv.textContent = text;
       messagesContainer.appendChild(userDiv);
+
       input.value = '';
-      const botDiv = document.createElement('div'); botDiv.className = 'message bot-message'; botDiv.textContent = 'Typing...';
-      messagesContainer.appendChild(botDiv);
-      setTimeout(() => { botDiv.textContent = 'Hello! Backend logic pending.'; }, 500);
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+      // typing indicator
+      const typingDiv = document.createElement('div');
+      typingDiv.className = 'message bot-message typing';
+      typingDiv.innerHTML = '<span class="dot"></span><span class="dot"></span><span class="dot"></span>';
+      messagesContainer.appendChild(typingDiv);
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+      // simulate bot response after delay
+      setTimeout(() => {
+        typingDiv.classList.remove('typing');
+        typingDiv.innerHTML = '🤖 Hello! Backend logic pending.';
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+      }, 1200);
     }
   </script>
 </body>
