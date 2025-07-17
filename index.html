@@ -2,158 +2,125 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Zeid Al-Ruzouq | Full-Stack Developer & AI Research Intern</title>
+  <title>Zeid Al‑Ruzouq | Full‑Stack Developer & AI Research Intern</title>
   <link rel="icon" href="favicon.png" type="image/png">
   <style>
+    :root {
+      --primary: #003366;
+      --bg: #f9f9f9;
+      --card-bg: #ffffff;
+      --radius: 8px;
+      --gap: 20px;
+    }
+    * { box-sizing: border-box; }
     body {
-      font-family: 'Helvetica Neue', sans-serif;
       margin: 0;
-      padding: 40px 20px;
-      background: #ffffff url('https://www.transparenttextures.com/patterns/symphony.png');
+      font-family: 'Helvetica Neue', sans-serif;
+      background-color: var(--bg);
       color: #111;
+      line-height: 1.6;
+    }
+    .container {
       max-width: 1000px;
-      margin: auto;
+      margin: 0 auto;
+      padding: var(--gap);
     }
     h1 {
       font-size: 2.3em;
       margin-bottom: 5px;
+      color: var(--primary);
     }
     h2 {
       font-size: 1.4em;
-      border-bottom: 2px solid #999;
-      margin-top: 2em;
+      border-bottom: 2px solid #ddd;
       padding-bottom: 6px;
+      margin-top: 40px;
+      color: var(--primary);
     }
     p, li {
       font-size: 1.05em;
-      line-height: 1.6;
     }
     ul {
       padding-left: 20px;
+      margin: 10px 0;
     }
     a {
-      color: #003366;
+      color: var(--primary);
       text-decoration: none;
     }
     a:hover {
       text-decoration: underline;
     }
-    img {
-      border-radius: 8px;
-      margin: 12px 0;
-      max-width: 100%;
-      display: block;
-    }
-    .image-container {
-      display: none;
-      transition: all 0.3s ease-in-out;
-    }
-    .toggle-icon {
-      margin-left: 10px;
-      cursor: pointer;
-      background: none;
-      color: #003366;
-      font-weight: bold;
-      border: none;
-      font-size: 0.95em;
-      padding: 0;
-    }
-    .toggle-icon:hover {
-      text-decoration: underline;
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--gap);
+      margin-top: var(--gap);
     }
     .card {
-      background: #fff;
-      border-radius: 12px;
-      padding: 20px;
-      margin-bottom: 25px;
-      box-shadow: 0 0 12px rgba(0,0,0,0.05);
+      background-color: var(--card-bg);
+      padding: var(--gap);
+      border-radius: var(--radius);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     }
   </style>
 </head>
 <body>
+  <div class="container">
 
-  <h1>Zeid Al-Ruzouq</h1>
-  <img src="profile.png" alt="Zeid Al-Ruzouq" width="180">
-  <p><strong>Full-Stack Developer & AI Research Intern</strong><br>
-    <a href="https://github.com/ZeidAl-Ruzouq" target="_blank">GitHub Profile</a>
-  </p>
+    <h1>Zeid Al‑Ruzouq</h1>
+    <p>
+      <strong>Full‑Stack Developer & AI Research Intern</strong><br>
+      <a href="https://github.com/ZeidAl-Ruzouq" target="_blank">GitHub Profile</a>
+    </p>
 
-  <h2>Contact</h2>
-  <p>
-    Email: <a href="mailto:zalruzouq@gmail.com">zalruzouq@gmail.com</a><br>
-    Phone: +1 (225) 575-0531<br>
-    Location: Allen, Texas
-  </p>
+    <h2>Contact</h2>
+    <p>
+      Email: <a href="mailto:zalruzouq@gmail.com">zalruzouq@gmail.com</a><br>
+      Location: Allen, Texas
+    </p>
 
-  <h2>Summary</h2>
-  <p>
-    I’m a developer and research intern focused on building intelligent systems and modern web applications. My work combines software engineering, interface design, and applied machine learning. I have experience delivering full-stack features, integrating third-party APIs, and contributing to research platforms that support data exploration and AI-powered analysis.
-  </p>
+    <h2>Summary</h2>
+    <p>
+      I’m a developer and research intern focused on building intelligent systems and modern web applications. My work combines software engineering, interface design, and applied machine learning. I have experience delivering full-stack features, integrating third-party APIs, and contributing to research platforms that support data exploration and AI-powered analysis.
+    </p>
 
-  <h2>Projects & Technical Contributions</h2>
+    <h2>Experience</h2>
+    <div class="projects">
 
-  <div class="card">
-    <strong>Mantis Platform – CSAIL, MIT</strong><br>
-    Contributing as a student intern to Mantis, an AI-powered platform for cognitive cartography and data visualization. My work involves integrating third-party APIs, designing interfaces, and integrating ML-based data exploration tools.
-    Supporting the development of an interactive research tool for large-scale data visualization and machine learning.
-    <ul>
-      <li><em>Multimedia Space</em>: Developed a feature to retrieve, structure, and export information from external sources such as Wikipedia, PubMed, Reddit, and NASA.
-        <button class="toggle-icon" onclick="toggleImage(this)">⯈ Show Image</button>
-        <div class="image-container"><img src="multimedia.jpeg" alt="Multimedia space"></div>
-      </li>
-      <li><em>Gradient Visualization</em>: Built the visualization to display feature change in the axes of variation in embedded spaces.
-        <button class="toggle-icon" onclick="toggleImage(this)">⯈ Show Image</button>
-        <div class="image-container"><img src="gradients.png" alt="Gradients"></div>
-      </li>
-      <li><em>Gmail Integration</em>: Created the flow to authenticate users and generate structured data spaces from email content.
-        <button class="toggle-icon" onclick="toggleImage(this)">⯈ Show Image</button>
-        <div class="image-container"><img src="gmail.png" alt="Gmail Integration"></div>
-      </li>
-      <li>Part in core feature planning and serve in a leadership role within the Mantis leadership team.</li>
-    </ul>
+      <div class="card">
+        <strong>Mantis Platform – CSAIL, MIT</strong><br>
+        Intern in Mantis, an AI-powered platform for cognitive cartography and data visualization. My work involves integrating third-party APIs, designing interfaces, and integrating ML-based data exploration tools.
+        Supporting the development of an interactive research tool for large-scale data visualization and machine learning.
+        <ul>
+          <li><em>Multimedia Space</em>: Developed a feature to retrieve, structure, and export information from external sources such as Wikipedia, PubMed, Reddit, and NASA. </li>
+          <li><em>Gradient Visualization and Integration</em>: Built the visualization to display feature change in the axes of variation in embedded spaces.</li>
+          <li><em>Gmail Integration</em>: Created the flow to authenticate users and generate structured data spaces from email content.</li>
+          <li>Part in core feature planning and serve in a leadership role within the Mantis leadership team.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <strong> Machine Learning in Oral Cancer Research</strong><br>
+       Trained and evaluated five deep learning models to assess performance in fine-grained classification of oral cancer subtypes. Applied Grad-CAM for model interpretability and performed latent space uncertainty analysis to identify ambiguous prediction zones and complementary model behaviors.
+        <a href="https://github.com/ZeidAl-Ruzouq/AI-Educational-Tools" target="_blank">⮞ GitHub Repo</a>
+      </div>
+
+      <div class="card">
+        <strong>AI Educational Tools</strong><br>
+        Developed a set of intelligent web tools to enhance digital learning environments. Tools include an AI chatbot for students and parents, as well as using large language models to generate assessments from lecture slides.
+        <a href="https://github.com/ZeidAl-Ruzouq/convnext-results-oral-cancer" target="_blank">⮞ GitHub Repo</a>
+      </div>
+
+    </div>
+
+<h2>Skills</h2>
+<ul>
+  <li><strong>Languages:</strong> Python, JavaScript, TypeScript, HTML, CSS</li>
+  <li><strong>Frameworks & Libraries:</strong> React, Node.js, Django, PyTorch, TensorFlow, Pandas, NumPy</li>
+  <li><strong>Tools & Platforms:</strong> Git, GitHub, VS Code, Jupyter, Firebase, REST APIs</li>
+</ul>
+
   </div>
-
-  <div class="card">
-    <strong>Independent Machine Learning Research</strong><br>
-    Trained five diverse deep learning models on the ORCHID dataset for multiclass oral cancer histopathology classification. Used Grad-CAM to interpret feature importance and applied Mantis for uncertainty-aware latent space analysis. Focused on exposing confusion zones, model diversity, and embedding inconsistencies to prepare for ensemble fusion.
-    <button class="toggle-icon" onclick="toggleImage(this)">⯈ Show Image</button>
-    <div class="image-container"><img src="gradcam_mdoscc (1).png" alt="GradCAM MDOSCC"></div>
-
-    <br>Created confusion matrix summaries to identify key overlap zones in model predictions.
-    <button class="toggle-icon" onclick="toggleImage(this)">⯈ Show Image</button>
-    <div class="image-container"><img src="confusion_matrix_percentage (6).png" alt="Confusion Matrix"></div>
-
-    <br><a href="https://github.com/ZeidAl-Ruzouq/AI-Educational-Tools" target="_blank">⮞ GitHub Repo</a>
-  </div>
-
-  <div class="card">
-    <strong>AI Educational Tools</strong><br>
-    Developed a set of intelligent web tools to enhance digital learning environments. Tools include an AI chatbot for students and parents, as well as a PowerPoint-to-quiz generator powered by language models.
-    <button class="toggle-icon" onclick="toggleImage(this)">⯈ Show Image</button>
-    <div class="image-container"><img src="chatbot.png" alt="Chatbot Tool"></div>
-
-    <br>Used large language models to generate assessments from lecture slides.
-    <button class="toggle-icon" onclick="toggleImage(this)">⯈ Show Image</button>
-    <div class="image-container"><img src="AI-QUIZ.png" alt="AI Quiz Tool"></div>
-
-    <br><a href="https://github.com/ZeidAl-Ruzouq/convnext-results-oral-cancer" target="_blank">⮞ GitHub Repo</a>
-  </div>
-
-  <h2>Skills</h2>
-  <ul>
-    <li><strong>Programming:</strong> Python, JavaScript, TypeScript, HTML</li>
-    <li><strong>Frameworks & Libraries:</strong> React, Django, Node.js, PyTorch, TensorFlow, Pandas</li>
-    <li><strong>Languages:</strong> English (fluent), Arabic (fluent), French (basic)</li>
-  </ul>
-
-  <script>
-    function toggleImage(button) {
-      const container = button.nextElementSibling;
-      const isVisible = container.style.display === 'block';
-      container.style.display = isVisible ? 'none' : 'block';
-      button.textContent = isVisible ? '⯈ Show Image' : '⯆ Hide Image';
-    }
-  </script>
-
 </body>
 </html>
