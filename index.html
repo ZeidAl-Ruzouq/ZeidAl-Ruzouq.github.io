@@ -8,8 +8,8 @@
   <style>
     :root {
       --primary: #003366;
-      --bg: #f9f9f9;
-      --card-bg: #ffffff;
+      --bg: #ffffff;       /* white page background */
+      --card-bg: #f1f1f1;   /* light gray cards */
       --radius: 8px;
       --gap: 20px;
     }
@@ -65,55 +65,36 @@
       border-radius: var(--radius);
       box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     }
-    /* Chatbot & Griffin styles from student.html */
+
+    /* Chatbot styles */
     .gif-container {
-      position: absolute;
-      right: 5%;
-      top: 70%;
-      transform: translateY(-50%);
-      display: none;
-    }
-    .Griffin-button {
       position: fixed;
-      top: 20px;
-      right: 20px;
-      font-size: 24px;
+      bottom: 25px;
+      right: 25px;
+      display: block;
       cursor: pointer;
       z-index: 1000;
     }
-    .Griffin-button:hover::after {
-      content: "Call the Griffin!";
-      position: absolute;
-      top: 30px;
-      left: -10px;
-      background: rgba(0,0,0,0.8);
-      color: #fff;
-      font-size: 10px;
-      padding: 4px 8px;
-      border-radius: 4px;
-      white-space: nowrap;
-    }
     .intro-message {
-      position: absolute;
-      right: 14%;
-      bottom: 37%;
-      background-color: rgba(255,255,255,0.8);
+      position: fixed;
+      bottom: 160px;
+      right: 25px;
+      background-color: rgba(255,255,255,0.95);
       border: 1px solid #ccc;
       padding: 10px;
       border-radius: 8px;
       font-size: 11px;
-      cursor: pointer;
       max-width: 200px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      display: none;
+      display: block;
+      z-index: 1000;
     }
     .chat-box {
-      position: absolute;
-      right: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      background-color: rgba(255,255,255,0.9);
-      border: 1px solid #000;
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background-color: rgba(255,255,255,0.95);
+      border: 1px solid #ccc;
       padding: 10px;
       border-radius: 8px;
       font-size: 14px;
@@ -122,9 +103,8 @@
       display: none;
       overflow: hidden;
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      cursor: move;
       user-select: none;
-      z-index: 999;
+      z-index: 1001;
     }
     .chat-box .messages-container {
       display: flex;
@@ -249,18 +229,18 @@
 
   </div>
 
-  <!-- Chatbot & Griffin UI -->
+  <!-- Chatbot UI -->
   <div id="gif-container" class="gif-container">
-    <img src="chatbot.gif" alt="Bot" style="width:125px;">
+    <img src="chatbot.gif" alt="Chatbot GIF" style="width:125px;">
   </div>
   <div id="intro-message" class="intro-message">
-    🦅 Greetings! Ask me about my work or projects.
+    Greetings! Click the bot to chat about my work.
   </div>
   <div id="chat-box" class="chat-box">
     <div id="messages-container" class="messages-container"></div>
     <div class="input-container">
       <input type="text" id="chat-input" placeholder="Type your message...">
-      <button onclick="sendMessage()">Chat</button>
+      <button onclick="sendMessage()">Send</button>
     </div>
     <div class="resizer top-left"></div>
     <div class="resizer top-right"></div>
@@ -271,131 +251,106 @@
     <div class="resizer bottom"></div>
     <div class="resizer left"></div>
   </div>
-  <div class="Griffin-button" id="Griffin-button" onclick="toggleChat()">🦅</div>
 
   <script>
-    let isFirstMessage = true;
-    let guidelines = '';
+    // Show GIF & intro on load
+    window.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('gif-container').style.display = 'block';
+      document.getElementById('intro-message').style.display = 'block';
+    });
+
+    // Clicking GIF opens chat
+    document.getElementById('gif-container').addEventListener('click', () => {
+      document.getElementById('chat-box').style.display = 'block';
+      document.getElementById('gif-container').style.display = 'none';
+      document.getElementById('intro-message').style.display = 'none';
+    });
+
+    // Drag functionality
     const chatBox = document.getElementById('chat-box');
-    const messagesContainer = document.getElementById('messages-container');
-    const gifContainer = document.getElementById('gif-container');
-    const GriffinButton = document.getElementById('Griffin-button');
-    const introMessage = document.getElementById('intro-message');
-    let dragOffsetX, dragOffsetY, isDragging = false;
-
-    GriffinButton.addEventListener('click', () => {
-      gifContainer.style.display = 'block';
-      introMessage.style.display = 'block';
-      GriffinButton.style.display = 'none';
-    });
-
-    introMessage.addEventListener('click', () => {
-      const introText = document.createElement('div');
-      introText.className = 'message bot-message';
-      introText.textContent = introMessage.textContent;
-      messagesContainer.appendChild(introText);
-      introMessage.style.display = 'none';
-      gifContainer.style.display = 'none';
-      chatBox.style.display = 'block';
-    });
-
-    chatBox.addEventListener('mousedown', (e) => {
+    let isDragging = false, offsetX, offsetY;
+    chatBox.addEventListener('mousedown', e => {
       if (e.target.classList.contains('resizer')) return;
       isDragging = true;
-      dragOffsetX = e.clientX - chatBox.getBoundingClientRect().left;
-      dragOffsetY = e.clientY - chatBox.getBoundingClientRect().top;
-      window.addEventListener('mousemove', drag);
+      offsetX = e.clientX - chatBox.getBoundingClientRect().left;
+      offsetY = e.clientY - chatBox.getBoundingClientRect().top;
+      window.addEventListener('mousemove', onDrag);
       window.addEventListener('mouseup', stopDrag);
     });
-
-    function drag(e) {
+    function onDrag(e) {
       if (!isDragging) return;
-      chatBox.style.left = (e.clientX - dragOffsetX) + 'px';
-      chatBox.style.top = (e.clientY - dragOffsetY) + 'px';
+      chatBox.style.left = (e.clientX - offsetX) + 'px';
+      chatBox.style.top = (e.clientY - offsetY) + 'px';
     }
-
     function stopDrag() {
       isDragging = false;
-      window.removeEventListener('mousemove', drag);
+      window.removeEventListener('mousemove', onDrag);
       window.removeEventListener('mouseup', stopDrag);
     }
 
-    const resizers = document.querySelectorAll('.resizer');
-    resizers.forEach(resizer => {
+    // Resize functionality
+    document.querySelectorAll('.resizer').forEach(resizer => {
       resizer.addEventListener('mousedown', e => {
         e.preventDefault();
-        const original = {
-          width: parseFloat(getComputedStyle(chatBox).width),
-          height: parseFloat(getComputedStyle(chatBox).height),
+        const orig = {
+          w: chatBox.offsetWidth,
+          h: chatBox.offsetHeight,
           x: chatBox.getBoundingClientRect().left,
           y: chatBox.getBoundingClientRect().top,
           mouseX: e.clientX,
           mouseY: e.clientY
         };
-        function resize(e) {
-          const dx = e.clientX - original.mouseX;
-          const dy = e.clientY - original.mouseY;
+        function onResize(e) {
+          const dx = e.clientX - orig.mouseX;
+          const dy = e.clientY - orig.mouseY;
           if (resizer.classList.contains('bottom-right')) {
-            chatBox.style.width = original.width + dx + 'px';
-            chatBox.style.height = original.height + dy + 'px';
+            chatBox.style.width = orig.w + dx + 'px';
+            chatBox.style.height = orig.h + dy + 'px';
           } else if (resizer.classList.contains('bottom-left')) {
-            chatBox.style.width = original.width - dx + 'px';
-            chatBox.style.height = original.height + dy + 'px';
-            chatBox.style.left = original.x + dx + 'px';
+            chatBox.style.width = orig.w - dx + 'px';
+            chatBox.style.height = orig.h + dy + 'px';
+            chatBox.style.left = orig.x + dx + 'px';
           } else if (resizer.classList.contains('top-right')) {
-            chatBox.style.width = original.width + dx + 'px';
-            chatBox.style.height = original.height - dy + 'px';
-            chatBox.style.top = original.y + dy + 'px';
+            chatBox.style.width = orig.w + dx + 'px';
+            chatBox.style.height = orig.h - dy + 'px';
+            chatBox.style.top = orig.y + dy + 'px';
           } else if (resizer.classList.contains('top-left')) {
-            chatBox.style.width = original.width - dx + 'px';
-            chatBox.style.height = original.height - dy + 'px';
-            chatBox.style.left = original.x + dx + 'px';
-            chatBox.style.top = original.y + dy + 'px';
+            chatBox.style.width = orig.w - dx + 'px';
+            chatBox.style.height = orig.h - dy + 'px';
+            chatBox.style.left = orig.x + dx + 'px';
+            chatBox.style.top = orig.y + dy + 'px';
           } else if (resizer.classList.contains('top')) {
-            chatBox.style.height = original.height - dy + 'px';
-            chatBox.style.top = original.y + dy + 'px';
+            chatBox.style.height = orig.h - dy + 'px';
+            chatBox.style.top = orig.y + dy + 'px';
           } else if (resizer.classList.contains('bottom')) {
-            chatBox.style.height = original.height + dy + 'px';
+            chatBox.style.height = orig.h + dy + 'px';
           } else if (resizer.classList.contains('left')) {
-            chatBox.style.width = original.width - dx + 'px';
-            chatBox.style.left = original.x + dx + 'px';
+            chatBox.style.width = orig.w - dx + 'px';
+            chatBox.style.left = orig.x + dx + 'px';
           } else if (resizer.classList.contains('right')) {
-            chatBox.style.width = original.width + dx + 'px';
+            chatBox.style.width = orig.w + dx + 'px';
           }
         }
         function stopResize() {
-          window.removeEventListener('mousemove', resize);
+          window.removeEventListener('mousemove', onResize);
           window.removeEventListener('mouseup', stopResize);
         }
-        window.addEventListener('mousemove', resize);
+        window.addEventListener('mousemove', onResize);
         window.addEventListener('mouseup', stopResize);
       });
     });
 
+    // Send message (mock backend)
     async function sendMessage() {
       const input = document.getElementById('chat-input');
-      const message = input.value.trim();
-      if (!message) return;
-      const userMsg = document.createElement('div');
-      userMsg.className = 'message user-message';
-      userMsg.textContent = message;
-      messagesContainer.appendChild(userMsg);
+      const text = input.value.trim();
+      if (!text) return;
+      const userDiv = document.createElement('div'); userDiv.className = 'message user-message'; userDiv.textContent = text;
+      messagesContainer.appendChild(userDiv);
       input.value = '';
-      const botPlaceholder = document.createElement('div');
-      botPlaceholder.className = 'message bot-message';
-      botPlaceholder.textContent = 'Typing...';
-      messagesContainer.appendChild(botPlaceholder);
-      // Backend integration here
-      setTimeout(() => {
-        botPlaceholder.textContent = 'Hello! I will handle backend logic shortly.';
-      }, 500);
-    }
-
-    function toggleChat() {
-      gifContainer.style.display = 'none';
-      introMessage.style.display = 'none';
-      GriffinButton.style.display = '';
-      chatBox.style.display = chatBox.style.display === 'block' ? 'none' : 'block';
+      const botDiv = document.createElement('div'); botDiv.className = 'message bot-message'; botDiv.textContent = 'Typing...';
+      messagesContainer.appendChild(botDiv);
+      setTimeout(() => { botDiv.textContent = 'Hello! Backend logic pending.'; }, 500);
     }
   </script>
 </body>
