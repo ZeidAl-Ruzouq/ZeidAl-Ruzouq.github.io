@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Zeid Al‑Ruzouq | Full‑Stack Developer & AI Research Intern</title>
   <link rel="icon" href="favicon.png" type="image/png">
   <style>
@@ -15,6 +16,7 @@
     * { box-sizing: border-box; }
     body {
       margin: 0;
+      padding: 0;
       font-family: 'Helvetica Neue', sans-serif;
       background-color: var(--bg);
       color: #111;
@@ -63,53 +65,128 @@
       border-radius: var(--radius);
       box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     }
-    /* Chatbot styles */
-    #chat-toggle {
+    /* Chatbot & Griffin styles from student.html */
+    .gif-container {
+      position: absolute;
+      right: 5%;
+      top: 70%;
+      transform: translateY(-50%);
+      display: none;
+    }
+    .Griffin-button {
       position: fixed;
-      bottom: 20px;
+      top: 20px;
       right: 20px;
-      font-size: 28px;
+      font-size: 24px;
       cursor: pointer;
       z-index: 1000;
     }
-    .chatbox {
-      position: fixed;
-      bottom: 70px;
-      right: 20px;
-      width: 300px;
-      height: 350px;
-      background: #fff;
-      border: 1px solid #aaa;
+    .Griffin-button:hover::after {
+      content: "Call the Griffin!";
+      position: absolute;
+      top: 30px;
+      left: -10px;
+      background: rgba(0,0,0,0.8);
+      color: #fff;
+      font-size: 10px;
+      padding: 4px 8px;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+    .intro-message {
+      position: absolute;
+      right: 14%;
+      bottom: 37%;
+      background-color: rgba(255,255,255,0.8);
+      border: 1px solid #ccc;
+      padding: 10px;
       border-radius: 8px;
+      font-size: 11px;
+      cursor: pointer;
+      max-width: 200px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
       display: none;
-      flex-direction: column;
-      justify-content: space-between;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .chat-box {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(255,255,255,0.9);
+      border: 1px solid #000;
+      padding: 10px;
+      border-radius: 8px;
+      font-size: 14px;
+      width: 300px;
+      height: 300px;
+      display: none;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      cursor: move;
+      user-select: none;
       z-index: 999;
     }
-    .messages-container {
-      padding: 10px;
-      height: 80%;
+    .chat-box .messages-container {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
       overflow-y: auto;
-      font-size: 14px;
+      height: calc(100% - 50px);
+      padding-bottom: 10px;
+    }
+    .message {
+      padding: 10px;
+      border-radius: 8px;
+      max-width: 80%;
+      word-wrap: break-word;
+    }
+    .user-message {
+      align-self: flex-end;
+      background-color: rgba(200,200,255,0.8);
+      border: 1px solid #000;
+    }
+    .bot-message {
+      align-self: flex-start;
+      background-color: rgba(255,255,255,0.8);
+      border: 1px solid #ccc;
     }
     .input-container {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      right: 10px;
       display: flex;
-      padding: 10px;
-      gap: 5px;
+      gap: 10px;
     }
     .input-container input {
       flex: 1;
-      padding: 6px;
-      font-size: 14px;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
     }
     .input-container button {
-      padding: 6px 10px;
-      background: var(--primary);
-      color: white;
+      padding: 8px 12px;
+      background-color: var(--primary);
+      color: #fff;
       border: none;
+      border-radius: 4px;
       cursor: pointer;
     }
+    /* Resizers */
+    .resizer { position: absolute; background: transparent; z-index: 1; }
+    .resizer.top-left, .resizer.top-right, .resizer.bottom-left, .resizer.bottom-right {
+      width: 12px; height: 12px; background: #000; border-radius: 50%;
+    }
+    .resizer.top-left { left: -6px; top: -6px; cursor: nwse-resize; }
+    .resizer.top-right { right: -6px; top: -6px; cursor: nesw-resize; }
+    .resizer.bottom-left { left: -6px; bottom: -6px; cursor: nesw-resize; }
+    .resizer.bottom-right { right: -6px; bottom: -6px; cursor: nwse-resize; }
+    .resizer.top, .resizer.bottom { position: absolute; height: 6px; width: 50px; left: 50%; transform: translateX(-50%); background: #000; cursor: ns-resize; }
+    .resizer.top { top: -3px; }
+    .resizer.bottom { bottom: -3px; }
+    .resizer.left, .resizer.right { position: absolute; width: 6px; height: 50px; top: 50%; transform: translateY(-50%); background: #000; cursor: ew-resize; }
+    .resizer.left { left: -3px; }
+    .resizer.right { right: -3px; }
   </style>
 </head>
 <body>
@@ -143,7 +220,7 @@
           <li><em>Multimedia Space:</em> Developed a feature to retrieve, structure, and export information from external sources such as Wikipedia, PubMed, Reddit, and NASA.</li>
           <li><em>Gradient Visualization and Integration:</em> Built the visualization to display feature change in the axes of variation in embedded spaces.</li>
           <li><em>Gmail Integration:</em> Created the flow to authenticate users and generate structured data spaces from email content.</li>
-          <li>Participated in core feature planning and served in a leadership role within the Mantis team.</li>
+          <li>Part in core feature planning and served in a leadership role within the Mantis team.</li>
         </ul>
       </div>
 
@@ -172,36 +249,153 @@
 
   </div>
 
-  <!-- Chatbot UI -->
-  <div id="chat-toggle" onclick="toggleChat()">💬</div>
-  <div id="chatbox" class="chatbox">
-    <div id="chat-messages" class="messages-container"></div>
-    <div class="input-container">
-      <input type="text" id="chat-input" placeholder="Ask me something..." />
-      <button onclick="sendMessage()">Send</button>
-    </div>
+  <!-- Chatbot & Griffin UI -->
+  <div id="gif-container" class="gif-container">
+    <img src="images/dungeons-and-dragons-monster.gif" alt="Monster" style="width:125px;">
   </div>
+  <div id="intro-message" class="intro-message">
+    🦅 Greetings! Ask me about my work or projects.
+  </div>
+  <div id="chat-box" class="chat-box">
+    <div id="messages-container" class="messages-container"></div>
+    <div class="input-container">
+      <input type="text" id="chat-input" placeholder="Type your message...">
+      <button onclick="sendMessage()">Chat</button>
+    </div>
+    <div class="resizer top-left"></div>
+    <div class="resizer top-right"></div>
+    <div class="resizer bottom-left"></div>
+    <div class="resizer bottom-right"></div>
+    <div class="resizer top"></div>
+    <div class="resizer right"></div>
+    <div class="resizer bottom"></div>
+    <div class="resizer left"></div>
+  </div>
+  <div class="Griffin-button" id="Griffin-button" onclick="toggleChat()">🦅</div>
 
   <script>
-    function toggleChat() {
-      const box = document.getElementById('chatbox');
-      box.style.display = (!box.style.display || box.style.display === 'none') ? 'flex' : 'none';
+    let isFirstMessage = true;
+    let guidelines = '';
+    const chatBox = document.getElementById('chat-box');
+    const messagesContainer = document.getElementById('messages-container');
+    const gifContainer = document.getElementById('gif-container');
+    const GriffinButton = document.getElementById('Griffin-button');
+    const introMessage = document.getElementById('intro-message');
+    let dragOffsetX, dragOffsetY, isDragging = false;
+
+    GriffinButton.addEventListener('click', () => {
+      gifContainer.style.display = 'block';
+      introMessage.style.display = 'block';
+      GriffinButton.style.display = 'none';
+    });
+
+    introMessage.addEventListener('click', () => {
+      const introText = document.createElement('div');
+      introText.className = 'message bot-message';
+      introText.textContent = introMessage.textContent;
+      messagesContainer.appendChild(introText);
+      introMessage.style.display = 'none';
+      gifContainer.style.display = 'none';
+      chatBox.style.display = 'block';
+    });
+
+    chatBox.addEventListener('mousedown', (e) => {
+      if (e.target.classList.contains('resizer')) return;
+      isDragging = true;
+      dragOffsetX = e.clientX - chatBox.getBoundingClientRect().left;
+      dragOffsetY = e.clientY - chatBox.getBoundingClientRect().top;
+      window.addEventListener('mousemove', drag);
+      window.addEventListener('mouseup', stopDrag);
+    });
+
+    function drag(e) {
+      if (!isDragging) return;
+      chatBox.style.left = (e.clientX - dragOffsetX) + 'px';
+      chatBox.style.top = (e.clientY - dragOffsetY) + 'px';
     }
 
-    function sendMessage() {
+    function stopDrag() {
+      isDragging = false;
+      window.removeEventListener('mousemove', drag);
+      window.removeEventListener('mouseup', stopDrag);
+    }
+
+    const resizers = document.querySelectorAll('.resizer');
+    resizers.forEach(resizer => {
+      resizer.addEventListener('mousedown', e => {
+        e.preventDefault();
+        const original = {
+          width: parseFloat(getComputedStyle(chatBox).width),
+          height: parseFloat(getComputedStyle(chatBox).height),
+          x: chatBox.getBoundingClientRect().left,
+          y: chatBox.getBoundingClientRect().top,
+          mouseX: e.clientX,
+          mouseY: e.clientY
+        };
+        function resize(e) {
+          const dx = e.clientX - original.mouseX;
+          const dy = e.clientY - original.mouseY;
+          if (resizer.classList.contains('bottom-right')) {
+            chatBox.style.width = original.width + dx + 'px';
+            chatBox.style.height = original.height + dy + 'px';
+          } else if (resizer.classList.contains('bottom-left')) {
+            chatBox.style.width = original.width - dx + 'px';
+            chatBox.style.height = original.height + dy + 'px';
+            chatBox.style.left = original.x + dx + 'px';
+          } else if (resizer.classList.contains('top-right')) {
+            chatBox.style.width = original.width + dx + 'px';
+            chatBox.style.height = original.height - dy + 'px';
+            chatBox.style.top = original.y + dy + 'px';
+          } else if (resizer.classList.contains('top-left')) {
+            chatBox.style.width = original.width - dx + 'px';
+            chatBox.style.height = original.height - dy + 'px';
+            chatBox.style.left = original.x + dx + 'px';
+            chatBox.style.top = original.y + dy + 'px';
+          } else if (resizer.classList.contains('top')) {
+            chatBox.style.height = original.height - dy + 'px';
+            chatBox.style.top = original.y + dy + 'px';
+          } else if (resizer.classList.contains('bottom')) {
+            chatBox.style.height = original.height + dy + 'px';
+          } else if (resizer.classList.contains('left')) {
+            chatBox.style.width = original.width - dx + 'px';
+            chatBox.style.left = original.x + dx + 'px';
+          } else if (resizer.classList.contains('right')) {
+            chatBox.style.width = original.width + dx + 'px';
+          }
+        }
+        function stopResize() {
+          window.removeEventListener('mousemove', resize);
+          window.removeEventListener('mouseup', stopResize);
+        }
+        window.addEventListener('mousemove', resize);
+        window.addEventListener('mouseup', stopResize);
+      });
+    });
+
+    async function sendMessage() {
       const input = document.getElementById('chat-input');
-      const msg = input.value.trim();
-      if (!msg) return;
-
-      const messages = document.getElementById('chat-messages');
+      const message = input.value.trim();
+      if (!message) return;
       const userMsg = document.createElement('div');
-      userMsg.textContent = msg;
-      userMsg.style.textAlign = 'right';
-      messages.appendChild(userMsg);
-
+      userMsg.className = 'message user-message';
+      userMsg.textContent = message;
+      messagesContainer.appendChild(userMsg);
       input.value = '';
-      messages.scrollTop = messages.scrollHeight;
+      const botPlaceholder = document.createElement('div');
+      botPlaceholder.className = 'message bot-message';
+      botPlaceholder.textContent = 'Typing...';
+      messagesContainer.appendChild(botPlaceholder);
+      // Backend integration here
+      setTimeout(() => {
+        botPlaceholder.textContent = 'Hello! I will handle backend logic shortly.';
+      }, 500);
     }
+
+    function toggleChat() {
+      gifContainer.style.display = 'none';
+      introMessage.style.display = 'none';
+      GriffinButton.style.display = '';
+      chatBox.style.display = chatBox.style.display === 'block' ? 'none' : 'block';
     }
   </script>
 </body>
