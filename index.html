@@ -393,7 +393,6 @@ async function sendMessage() {
   messagesContainer.appendChild(typingDiv);
   messagesContainer.scrollTop = messagesContainer.scrollHeight;
 
-  // CV prompt prefix
   const prompt = `
 You are an intelligent assistant that answers questions based on the following CV:
 
@@ -422,8 +421,7 @@ Now, answer the following user message based on the above background:
   `;
 
   try {
-    const response = await fetch("https://backend-8t6v.onrender.com/api/generate
-", {
+    const response = await fetch("https://backend-8t6v.onrender.com/api/generate", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ prompt })
