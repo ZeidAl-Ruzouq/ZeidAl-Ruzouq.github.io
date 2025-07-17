@@ -374,34 +374,70 @@
     });
 
     // Send message with WhatsApp‑style typing animation
-    async function sendMessage() {
-      const input = document.getElementById('chat-input');
-      const text = input.value.trim();
-      if (!text) return;
+async function sendMessage() {
+  const input = document.getElementById('chat-input');
+  const userText = input.value.trim();
+  if (!userText) return;
 
-      // user message
-      const userDiv = document.createElement('div');
-      userDiv.className = 'message user-message';
-      userDiv.textContent = text;
-      messagesContainer.appendChild(userDiv);
+  const userDiv = document.createElement('div');
+  userDiv.className = 'message user-message';
+  userDiv.textContent = userText;
+  messagesContainer.appendChild(userDiv);
 
-      input.value = '';
-      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+  input.value = '';
+  messagesContainer.scrollTop = messagesContainer.scrollHeight;
 
-      // typing indicator
-      const typingDiv = document.createElement('div');
-      typingDiv.className = 'message bot-message typing';
-      typingDiv.innerHTML = '<span class="dot"></span><span class="dot"></span><span class="dot"></span>';
-      messagesContainer.appendChild(typingDiv);
-      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+  const typingDiv = document.createElement('div');
+  typingDiv.className = 'message bot-message typing';
+  typingDiv.innerHTML = '<span class="dot"></span><span class="dot"></span><span class="dot"></span>';
+  messagesContainer.appendChild(typingDiv);
+  messagesContainer.scrollTop = messagesContainer.scrollHeight;
 
-      // simulate bot response after delay
-      setTimeout(() => {
-        typingDiv.classList.remove('typing');
-        typingDiv.innerHTML = '🤖 Hello! Backend logic pending.';
-        messagesContainer.scrollTop = messagesContainer.scrollHeight;
-      }, 1200);
-    }
+  // CV prompt prefix
+  const prompt = `
+You are an intelligent assistant that answers questions based on the following CV:
+
+Name: Zeid Al‑Ruzouq  
+Title: Full‑Stack Developer & AI Research Intern  
+Location: Allen, Texas  
+GitHub: https://github.com/ZeidAl-Ruzouq  
+Email: zalruzouq@gmail.com  
+
+Summary:  
+Zeid is a developer and research intern focused on intelligent systems and modern web applications. He combines software engineering, interface design, and applied machine learning. He has delivered full‑stack features, integrated third‑party APIs, and contributed to research platforms supporting data exploration and AI‑powered analysis.
+
+Experience:  
+- Mantis Platform, CSAIL MIT: Developed cognitive cartography tools, Wikipedia/PubMed/NASA data integration, gradient visualization, Gmail authentication pipeline, and led feature planning.  
+- Oral Cancer ML Research: Trained/evaluated 5 deep learning models, performed Grad-CAM & uncertainty analysis, and analyzed ambiguous prediction zones.  
+- AI Educational Tools: Built an AI chatbot for students/parents and tools to generate quizzes from slides using LLMs.
+
+Skills:  
+- Languages: Python, JavaScript, TypeScript, HTML, CSS  
+- Frameworks: React, Node.js, Django, PyTorch, TensorFlow  
+- Tools: Git, GitHub, VS Code, Jupyter, Firebase, REST APIs
+
+Now, answer the following user message based on the above background:
+
+"${userText}"
+  `;
+
+  try {
+    const response = await fetch("https://chatbot-backend.onrender.com/api/generate", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ prompt })
+    });
+
+    const data = await response.json();
+    typingDiv.classList.remove("typing");
+    typingDiv.innerHTML = `🤖 ${data.response}`;
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+  } catch (error) {
+    console.error("Fetch error:", error);
+    typingDiv.classList.remove("typing");
+    typingDiv.innerHTML = "🤖 Sorry, something went wrong.";
+  }
+}
   </script>
 </body>
 </html>
