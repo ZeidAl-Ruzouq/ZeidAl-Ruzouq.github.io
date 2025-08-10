@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zeid Al‑Ruzouq | CV</title>
+  <title>Zeid Al-Ruzouq | CV</title>
   <link rel="icon" href="favicon.png" type="image/png">
 
   <!-- Google Analytics -->
@@ -172,37 +172,13 @@
       border-radius: 4px;
       cursor: pointer;
     }
-    /* Resizers */
-    .resizer { position: absolute; background: transparent; z-index: 1; }
-    .resizer.top-left, .resizer.top-right, .resizer.bottom-left, .resizer.bottom-right {
-      width: 12px; height: 12px; background: #000; border-radius: 50%;
-    }
-    .resizer.top-left { left: -6px; top: -6px; cursor: nwse-resize; }
-    .resizer.top-right { right: -6px; top: -6px; cursor: nesw-resize; }
-    .resizer.bottom-left { left: -6px; bottom: -6px; cursor: nesw-resize; }
-    .resizer.bottom-right { right: -6px; bottom: -6px; cursor: nwse-resize; }
-    .resizer.top, .resizer.bottom {
-      position: absolute; height: 6px; width: 50px;
-      left: 50%; transform: translateX(-50%);
-      background: #000; cursor: ns-resize;
-    }
-    .resizer.top { top: -3px; }
-    .resizer.bottom { bottom: -3px; }
-    .resizer.left, .resizer.right {
-      position: absolute; width: 6px; height: 50px;
-      top: 50%; transform: translateY(-50%);
-      background: #000; cursor: ew-resize;
-    }
-    .resizer.left { left: -3px; }
-    .resizer.right { right: -3px; }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Zeid Al‑Ruzouq</h1>
-    <img src="profile.png" alt="Zeid Al‑Ruzouq" width="180">
+    <h1>Zeid Al-Ruzouq</h1>
     <p>
-      <strong>Full‑Stack Developer & AI Research Intern</strong><br>
+      <strong>Full-Stack Developer & AI Research Intern</strong><br>
       <a href="https://github.com/ZeidAl-Ruzouq" target="_blank">GitHub Profile</a>
     </p>
     <h2>Contact</h2>
@@ -212,241 +188,42 @@
     </p>
     <h2>Summary</h2>
     <p>
-      I’m a developer and research intern focused on building intelligent systems and modern web applications. My work combines software engineering, interface design, and applied machine learning. I have experience delivering full‑stack features, integrating third‑party APIs, and contributing to research platforms that support data exploration and AI‑powered analysis.
+      I’m a developer and research intern focused on building intelligent systems and modern web applications. My work combines software engineering, interface design, and applied machine learning. I have experience delivering full-stack features, integrating third-party APIs, and contributing to research platforms that support data exploration and AI-powered analysis.
     </p>
     <h2>Experience</h2>
     <div class="projects">
       <div class="card">
-        <strong>Mantis Platform – CSAIL, MIT</strong><br>
-        Intern in Mantis, an AI‑powered platform for cognitive cartography and data visualization. My work involves integrating third‑party APIs, designing interfaces, and integrating ML‑based data exploration tools.
+        <strong>Kellis Lab at CSAIL, MIT — Research Intern, Mantis Platform | Fall 2024 – Present</strong>
+        <p>
+          Contributing to the Mantis Platform, an AI-powered environment for cognitive cartography and data visualization. Work involves integrating third-party APIs, designing user interfaces, and developing ML-based data exploration tools. Key contributions:
+        </p>
         <ul>
-          <li><em>Multimedia Space:</em> Developed a feature to retrieve, structure, and export information from external sources such as Wikipedia, PubMed, Reddit, and NASA.</li>
-          <li><em>Gradient Visualization and Integration:</em> Built the visualization to display feature change in the axes of variation in embedded spaces.</li>
-          <li><em>Gmail Integration:</em> Created the flow to authenticate users and generate structured data spaces from email content.</li>
-          <li>Part in core feature planning and served in a leadership role within the Mantis team.</li>
+          <li><em>Multimedia Space:</em> Designed and implemented a system to retrieve, structure, and ingest information from sources such as Wikipedia, PubMed, Reddit, and NASA for space creation.</li>
+          <li><em>Gradient Visualization & Integration:</em> Built visualization and logic to display feature changes along axes of variation in embedded spaces, with tools for exploring changes in latent dimensions.</li>
+          <li><em>Integration of APIs:</em> Developed a full-stack system to track user spaces and related statistics, including authentication flows to generate structured data spaces from email content.</li>
+          <li><em>Leadership:</em> Served as an active mentor and core leader on the Mantis leadership team, overseeing technical initiatives and coordinating major projects. Led efforts for the Gradients in the Embeddings team, a full-stack data ingestion platform in the Ingestion team, and space statistics/handling for the Backbone team. Directed task assignments, guided new members through onboarding and execution, and contributed to strategic planning.</li>
         </ul>
       </div>
+
       <div class="card">
-        <strong>Machine Learning in Oral Cancer Research</strong><br>
-        Trained and evaluated five deep learning models to assess performance in fine‑grained classification of oral cancer subtypes. Applied Grad‑CAM for model interpretability and performed latent space uncertainty analysis to identify ambiguous prediction zones and complementary model behaviors.
-        <br><br>
-        <a href="https://github.com/ZeidAl-Ruzouq/convnext-results-oral-cancer" target="_blank">⮞ GitHub Repo</a>
+        <strong>Machine Learning in Oral Cancer Research | Spring 2024 – Fall 2025</strong>
+        <p>
+          Collaborated under the guidance of a Microsoft Senior Lead from the Kellis Lab at MIT CSAIL and a dentist at Texas Tech University. The project focused on interpretable AI methods for fine-grained oral cancer diagnosis, addressing clinical challenges in distinguishing normal, precancerous, and malignant histological states using high-resolution pathology images. Key contributions:
+        </p>
+        <ul>
+          <li>Trained and analyzed five diverse CNN and transformer architecture models on 3,525 labeled patches from the ORCHID dataset. Applied Grad-CAM to visualize decision-relevant regions and used the Mantis platform for latent space analysis to analyze softmax and variance outputs, uncovering ambiguous zones and model-specific blind spots.</li>
+          <li>Achieved up to 93% classification accuracy with an AUC of 0.96, and interpretability tools revealed critical diagnostic regions and latent confusion clusters, supporting clinically meaningful error analysis and interpretable use of models in the clinical workforce.</li>
+          <li>Accepted to present findings as first author at the 4th Annual AI in Health Conference at Rice University (Houston, Sept 23–24, 2025), showcasing novel methods in interpretable deep learning for oral histopathology within the broader AI-driven clinical research agenda.</li>
+        </ul>
       </div>
+
       <div class="card">
         <strong>AI Educational Tools</strong><br>
-        Developed a set of intelligent web tools to enhance digital learning environments. Tools include an AI chatbot for students and parents, as well as leveraging large language models to generate assessments from lecture slides.
+        Developed intelligent web tools to enhance digital learning. Projects include an AI chatbot for students/parents and leveraging LLMs to generate assessments from lecture slides.
         <br><br>
         <a href="https://github.com/ZeidAl-Ruzouq/AI-Educational-Tools" target="_blank">⮞ GitHub Repo</a>
       </div>
     </div>
-    <h2>Skills</h2>
-    <ul>
-      <li><strong>Languages:</strong> Python, JavaScript, TypeScript, HTML, CSS</li>
-      <li><strong>Frameworks & Libraries:</strong> React, Node.js, Django, PyTorch, TensorFlow, Pandas, NumPy</li>
-      <li><strong>Tools & Platforms:</strong> Git, GitHub, VS Code, Jupyter, Firebase, REST APIs</li>
-    </ul>
   </div>
-
-  <!-- Chatbot UI -->
-  <div id="gif-container" class="gif-container">
-    <img src="chatbot.gif" alt="Chatbot GIF" style="width:100%;">
-  </div>
-  <div id="intro-message" class="intro-message">
-    Hi there, feel free to ask me anything!
-  </div>
-  <div id="chat-box" class="chat-box">
-    <button id="close-btn" class="close-btn">×</button>
-    <div id="messages-container" class="messages-container"></div>
-    <div class="input-container">
-      <input type="text" id="chat-input" placeholder="Type your message...">
-      <button onclick="sendMessage()">Send</button>
-    </div>
-    <div class="resizer top-left"></div>
-    <div class="resizer top-right"></div>
-    <div class="resizer bottom-left"></div>
-    <div class="resizer bottom-right"></div>
-    <div class="resizer top"></div>
-    <div class="resizer right"></div>
-    <div class="resizer bottom"></div>
-    <div class="resizer left"></div>
-  </div>
-
-  <script>
-    const gifContainer = document.getElementById('gif-container');
-    const introMessage = document.getElementById('intro-message');
-    const chatBox = document.getElementById('chat-box');
-    const messagesContainer = document.getElementById('messages-container');
-    let hasChatOpened = false;
-
-    // Show GIF & intro on load
-    window.addEventListener('DOMContentLoaded', () => {
-      gifContainer.style.display = 'block';
-      introMessage.style.display = 'block';
-    });
-
-    // Handler to open chat
-    function openChat() {
-      chatBox.style.display = 'block';
-      gifContainer.style.display = 'none';
-      introMessage.style.display = 'none';
-      // Add initial bot message only on first open
-      if (!hasChatOpened) {
-        const botIntro = document.createElement('div');
-        botIntro.className = 'message bot-message';
-        botIntro.textContent = ' 🤖 Hi there, feel free to ask me anything!';
-        messagesContainer.appendChild(botIntro);
-        hasChatOpened = true;
-      }
-    }
-
-    // Open chat on click of gif or intro message
-    gifContainer.addEventListener('click', openChat);
-    introMessage.addEventListener('click', openChat);
-
-    // Close chat on close button click
-    document.getElementById('close-btn').addEventListener('click', () => {
-      chatBox.style.display = 'none';
-      gifContainer.style.display = 'block';
-      // intro-message remains hidden, messages are preserved
-    });
-
-    // Drag functionality
-    let isDragging = false, offsetX, offsetY;
-    chatBox.addEventListener('mousedown', e => {
-      if (e.target.classList.contains('resizer')) return;
-      isDragging = true;
-      offsetX = e.clientX - chatBox.getBoundingClientRect().left;
-      offsetY = e.clientY - chatBox.getBoundingClientRect().top;
-      window.addEventListener('mousemove', onDrag);
-      window.addEventListener('mouseup', stopDrag);
-    });
-    function onDrag(e) {
-      if (!isDragging) return;
-      chatBox.style.left = (e.clientX - offsetX) + 'px';
-      chatBox.style.top = (e.clientY - offsetY) + 'px';
-    }
-    function stopDrag() {
-      isDragging = false;
-      window.removeEventListener('mousemove', onDrag);
-      window.removeEventListener('mouseup', stopDrag);
-    }
-
-    // Resize functionality
-    document.querySelectorAll('.resizer').forEach(resizer => {
-      resizer.addEventListener('mousedown', e => {
-        e.preventDefault();
-        const orig = {
-          w: chatBox.offsetWidth,
-          h: chatBox.offsetHeight,
-          x: chatBox.getBoundingClientRect().left,
-          y: chatBox.getBoundingClientRect().top,
-          mouseX: e.clientX,
-          mouseY: e.clientY
-        };
-        function onResize(e) {
-          const dx = e.clientX - orig.mouseX;
-          const dy = e.clientY - orig.mouseY;
-          if (resizer.classList.contains('bottom-right')) {
-            chatBox.style.width = orig.w + dx + 'px';
-            chatBox.style.height = orig.h + dy + 'px';
-          } else if (resizer.classList.contains('bottom-left')) {
-            chatBox.style.width = orig.w - dx + 'px';
-            chatBox.style.height = orig.h + dy + 'px';
-            chatBox.style.left = orig.x + dx + 'px';
-          } else if (resizer.classList.contains('top-right')) {
-            chatBox.style.width = orig.w + dx + 'px';
-            chatBox.style.height = orig.h - dy + 'px';
-            chatBox.style.top = orig.y + dy + 'px';
-          } else if (resizer.classList.contains('top-left')) {
-            chatBox.style.width = orig.w - dx + 'px';
-            chatBox.style.height = orig.h - dy + 'px';
-            chatBox.style.left = orig.x + dx + 'px';
-            chatBox.style.top = orig.y + dy + 'px';
-          } else if (resizer.classList.contains('top')) {
-            chatBox.style.height = orig.h - dy + 'px';
-            chatBox.style.top = orig.y + dy + 'px';
-          } else if (resizer.classList.contains('bottom')) {
-            chatBox.style.height = orig.h + dy + 'px';
-          } else if (resizer.classList.contains('left')) {
-            chatBox.style.width = orig.w - dx + 'px';
-            chatBox.style.left = orig.x + dx + 'px';
-          } else if (resizer.classList.contains('right')) {
-            chatBox.style.width = orig.w + dx + 'px';
-          }
-        }
-        function stopResize() {
-          window.removeEventListener('mousemove', onResize);
-          window.removeEventListener('mouseup', stopResize);
-        }
-        window.addEventListener('mousemove', onResize);
-        window.addEventListener('mouseup', stopResize);
-      });
-    });
-
-    // Send message with WhatsApp‑style typing animation
-async function sendMessage() {
-  const input = document.getElementById('chat-input');
-  const userText = input.value.trim();
-  if (!userText) return;
-
-  const userDiv = document.createElement('div');
-  userDiv.className = 'message user-message';
-  userDiv.textContent = userText;
-  messagesContainer.appendChild(userDiv);
-
-  input.value = '';
-  messagesContainer.scrollTop = messagesContainer.scrollHeight;
-
-  const typingDiv = document.createElement('div');
-  typingDiv.className = 'message bot-message typing';
-  typingDiv.innerHTML = '<span class="dot"></span><span class="dot"></span><span class="dot"></span>';
-  messagesContainer.appendChild(typingDiv);
-  messagesContainer.scrollTop = messagesContainer.scrollHeight;
-
-  const prompt = `
-You are an intelligent assistant that answers questions based on the following CV:
-
-Name: Zeid Al‑Ruzouq  
-Title: Full‑Stack Developer & AI Research Intern  
-Location: Allen, Texas  
-GitHub: https://github.com/ZeidAl-Ruzouq  
-Email: zalruzouq@gmail.com  
-
-Summary:  
-Zeid is a developer and research intern focused on intelligent systems and modern web applications. He combines software engineering, interface design, and applied machine learning. He has delivered full‑stack features, integrated third‑party APIs, and contributed to research platforms supporting data exploration and AI‑powered analysis.
-
-Experience:  
-- Mantis Platform, CSAIL MIT: Developed cognitive cartography tools, Wikipedia/PubMed/NASA data integration, gradient visualization, Gmail authentication pipeline, and led feature planning.  
-- Oral Cancer ML Research: Trained/evaluated 5 deep learning models, performed Grad-CAM & uncertainty analysis, and analyzed ambiguous prediction zones.  
-- AI Educational Tools: Built an AI chatbot for students/parents and tools to generate quizzes from slides using LLMs.
-
-Skills:  
-- Languages: Python, JavaScript, TypeScript, HTML, CSS  
-- Frameworks: React, Node.js, Django, PyTorch, TensorFlow  
-- Tools: Git, GitHub, VS Code, Jupyter, Firebase, REST APIs
-
-Now, answer the following user message based on the above background:
-
-"${userText}"
-  `;
-
-  try {
-    const response = await fetch("https://backend-lilac-alpha-74.vercel.app/api/generate", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ prompt })
-    });
-
-    const data = await response.json();
-    typingDiv.classList.remove("typing");
-    typingDiv.innerHTML = `🤖 ${data.response}`;
-    messagesContainer.scrollTop = messagesContainer.scrollHeight;
-  } catch (error) {
-    console.error("Fetch error:", error);
-    typingDiv.classList.remove("typing");
-    typingDiv.innerHTML = "🤖 Sorry, something went wrong.";
-  }
-}
-  </script>
 </body>
 </html>
